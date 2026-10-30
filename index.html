@@ -3,458 +3,461 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ProPlaza — La plaza de micro apps para problemas reales</title>
-<meta name="description" content="La plaza de micro apps para problemas reales: explora por tu necesidad, estudia cada app y compra directo al creador. Cero comisiones por venta.">
+<title>ProPlaza — Micro apps para problemas reales</title>
+<meta name="description" content="ProPlaza: micro apps de nicho sin intermediarios. Cada app expone UN problema y lo resuelve. Los creadores cobran directo a su nombre, 0% comisión. Explora por dolor, no por hype.">
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
-tailwind.config = { theme: { extend: {
-  colors: { brand:{DEFAULT:'#3AAFA9',dark:'#2c8a85',light:'#5ec9c4'}, miel:'#E8B04B', navy:{DEFAULT:'#34495E',dark:'#24374a',light:'#4e6d8d'} },
-  fontFamily: { sans:['Inter','system-ui','sans-serif'], display:['"Space Grotesk"','Inter','system-ui','sans-serif'] }
-}}}
+tailwind.config = {
+  theme: { extend: {
+    colors: {
+      brand: { DEFAULT:'#3AAFA9', dark:'#2c8a85', light:'#5ec9c4' },
+      miel:  '#E8B04B',
+      navy:  { DEFAULT:'#34495E', dark:'#24374a', light:'#4e6d8d' }
+    },
+    fontFamily: {
+      sans: ['Inter','system-ui','sans-serif'],
+      display: ['"Space Grotesk"','Inter','system-ui','sans-serif']
+    }
+  }}
+}
 </script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
-  body{font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
-  html{scroll-behavior:smooth;scroll-padding-top:96px}
-  .card{transition:transform .18s ease,box-shadow .18s ease}
-  @media (hover:hover){.card:hover{transform:translateY(-4px);box-shadow:0 16px 34px rgba(52,73,94,.14)}}
-  .card.is-hidden{display:none}
-  .kicker{letter-spacing:.25em}
-  .chip{transition:all .15s ease}
-  .chip[aria-pressed="true"]{background:#34495E;color:#fff;border-color:#34495E}
-  .pain{transition:all .15s ease}
-  @media (hover:hover){.pain:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(52,73,94,.12);border-color:#3AAFA9}}
-  .shot-frame svg{display:block}
-  input,textarea{width:100%;border:1px solid #e2e8f0;border-radius:14px;padding:12px 16px;font-size:15px;outline:none;background:#fff}
-  input:focus,textarea:focus{border-color:#3AAFA9;box-shadow:0 0 0 3px rgba(58,175,169,.18)}
-  input[type=checkbox]{width:1.25rem;padding:0}
+  body { font-family:'Inter',system-ui,sans-serif; -webkit-font-smoothing:antialiased; }
+  .card { transition:transform .12s ease, box-shadow .12s ease; }
+  .card:hover { transform:translateY(-2px); box-shadow:0 10px 24px rgba(52,73,94,.12); }
+  .chip { transition:all .12s ease; }
+  .chip.on { background:#34495E; color:#fff; border-color:#34495E; }
+  ::-webkit-scrollbar { width:8px; } ::-webkit-scrollbar-thumb { background:#cbd5e1; border-radius:8px; }
 </style>
 <base target="_blank">
-<base target="_blank">
 </head>
-<body class="bg-[#f3f5f4] text-slate-800">
+<body class="bg-[#f6f7f6] text-slate-800">
 
-<header class="sticky top-0 z-40 bg-white/90 backdrop-blur border-b border-slate-100">
-  <div class="max-w-6xl mx-auto px-5 py-3.5 flex items-center justify-between gap-3">
-    <a href="#top" target="_self" class="flex items-center gap-2.5">
-      <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand to-brand-dark flex items-center justify-center shadow-md shadow-brand/25">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l1.5-5h15L21 9"/><path d="M4 9v11h16V9"/><path d="M4 9a2.5 2.5 0 005 0 2.5 2.5 0 005 0 2.5 2.5 0 005 0"/><path d="M9.5 20v-6h5v6"/></svg>
-      </div>
-      <div>
-        <span class="font-display font-bold text-xl tracking-tight text-navy leading-none">Pro<span class="text-brand">Plaza</span></span>
-        <p class="text-[10px] text-slate-400 uppercase tracking-widest mt-0.5" data-i18n="tagline">Apps de nicho · sin intermediarios</p>
-      </div>
-    </a>
-    <div class="flex items-center gap-2">
-      <nav class="hidden md:flex items-center gap-5 text-sm font-medium text-slate-500 mr-2">
-        <a href="#apps" target="_self" class="hover:text-brand transition" data-i18n="navApps">Apps</a>
-        <a href="#creadores" target="_self" class="hover:text-brand transition" data-i18n="navCreators">Para creadores</a>
-        <a href="terminos-anunciante-proplaza.html" target="_self" class="hover:text-brand transition" data-i18n="navTerms">Términos</a>
-      </nav>
-      <button id="langBtn" onclick="toggleLang()" aria-label="Cambiar idioma / Switch language" class="h-9 px-3.5 inline-flex items-center gap-1.5 rounded-full border border-slate-200 hover:border-brand/60 text-xs font-medium transition">🇪🇸 ES</button>
-      <a href="#creadores" target="_self" class="hidden sm:inline-flex h-9 px-4 items-center rounded-full bg-navy hover:bg-navy-dark text-white text-sm font-semibold transition" data-i18n="navCreator">¿Eres creador?</a>
+<header class="max-w-5xl mx-auto px-5 pt-7 pb-5 flex items-center justify-between gap-3">
+  <div class="flex items-center gap-2.5">
+    <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-brand to-brand-dark flex items-center justify-center shadow-md shadow-brand/25">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+    </div>
+    <div>
+      <span class="font-display font-bold text-lg tracking-tight text-navy">Pro<span class="text-brand">Plaza</span></span>
+      <p class="text-[11px] text-slate-500 -mt-0.5" data-i18n="tagline">Apps de nicho · sin intermediarios</p>
     </div>
   </div>
+  <button id="langBtn" onclick="toggleLang()" class="h-9 px-3.5 rounded-full border border-slate-200 hover:border-brand/60 text-xs font-medium transition">🇪🇸 ES</button>
 </header>
 
-<main id="top">
-
-<!-- ══════ HERO ══════ -->
-<section class="relative overflow-hidden">
-  <div class="absolute -top-24 -right-24 w-80 h-80 rounded-full bg-brand/10 blur-3xl pointer-events-none"></div>
-  <div class="absolute -bottom-24 -left-24 w-72 h-72 rounded-full bg-miel/10 blur-3xl pointer-events-none"></div>
-  <div class="relative max-w-3xl mx-auto px-5 pt-14 pb-12 text-center">
-    <p class="text-[11px] font-bold uppercase kicker text-brand mb-4" data-i18n="kicker">MICRO APPS PARA PROBLEMAS REALES</p>
-    <h1 class="font-display text-4xl md:text-6xl font-bold leading-[1.05] tracking-tight text-navy" data-i18n="heroTitle">Micro apps para problemas reales. Las que lo demuestran ganan el sello <span class="text-brand">Pro</span></h1>
-    <p class="mt-5 text-lg text-slate-600 max-w-xl mx-auto leading-relaxed" data-i18n="heroSub">Herramientas pequeñas, precisas y en tu idioma — cada una diseñada para <strong class="text-navy">un solo problema de un solo nicho</strong>. Sin comisiones por venta: cada creador cobra directo a su nombre.</p>
-    <div class="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
-      <a href="#apps" target="_self" class="h-12 px-6 inline-flex items-center justify-center rounded-full bg-navy hover:bg-navy-light text-white font-semibold transition" data-i18n="heroCta1">Explorar la plaza →</a>
-      <a href="#creadores" target="_self" class="h-12 px-6 inline-flex items-center justify-center rounded-full border-2 border-navy text-navy font-semibold hover:bg-navy hover:text-white transition" data-i18n="heroCta2">Quiero un puesto</a>
-    </div>
-    <div class="mt-10 grid grid-cols-3 max-w-lg mx-auto rounded-2xl bg-[#f3f5f4] border border-slate-100 divide-x divide-slate-200">
-      <div class="py-4"><p class="font-display text-3xl font-bold text-navy"><span data-count="3">0</span></p><p class="text-xs text-slate-500 uppercase tracking-wide" data-i18n="statApps">apps</p></div>
-      <div class="py-4"><p class="font-display text-3xl font-bold text-navy"><span data-count="3">0</span></p><p class="text-xs text-slate-500 uppercase tracking-wide" data-i18n="statNiches">nichos</p></div>
-      <div class="py-4"><p class="font-display text-3xl font-bold text-brand">0%</p><p class="text-xs text-slate-500 uppercase tracking-wide" data-i18n="statFees">comisión por venta</p></div>
-    </div>
+<!-- HERO -->
+<section class="max-w-3xl mx-auto px-5 pt-14 pb-12 text-center">
+  <p class="text-[11px] font-bold uppercase tracking-[.25em] text-brand mb-4" data-i18n="kicker">Micro apps</p>
+  <h1 class="font-display text-4xl md:text-6xl font-bold leading-[1.05] tracking-tight text-navy" data-i18n="heroTitle">Micro apps para problemas reales.</h1>
+  <p class="mt-5 text-lg text-slate-600 max-w-xl mx-auto leading-relaxed" data-i18n="heroSub">
+    Las que lo demuestran ganan el sello Pro. <strong>Un problema. Un nicho. Sin comisiones.</strong> Explora por dolor, no por hype.
+  </p>
+  <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
+    <a href="#apps" target="_self" class="rounded-full bg-gradient-to-r from-brand to-brand-dark text-white font-semibold px-7 py-3.5 shadow-md shadow-brand/25" data-i18n="ctaExplore">Explorar la plaza</a>
+    <a href="#creadores" target="_self" class="rounded-full border-2 border-navy/20 hover:border-brand/60 text-navy font-semibold px-6 py-3 transition" data-i18n="ctaCreator">¿Eres creador?</a>
+  </div>
+  <div class="mt-8 flex items-center justify-center gap-6 text-sm text-slate-500">
+    <span><strong class="text-navy font-display">3</strong> <span data-i18n="statApps">apps</span></span>
+    <span class="text-slate-300">·</span>
+    <span><strong class="text-navy font-display">3</strong> <span data-i18n="statNiches">nichos</span></span>
+    <span class="text-slate-300">·</span>
+    <span><strong class="text-navy font-display">0%</strong> <span data-i18n="statCommission">comisión por venta</span></span>
   </div>
 </section>
 
-<!-- ══════ EL MOSTRADOR ══════ -->
-<section class="bg-[#f3f5f4] border-y border-slate-100">
-  <div class="max-w-4xl mx-auto px-5 py-14 text-center">
-    <p class="text-[11px] font-bold uppercase kicker text-brand mb-3" data-i18n="moKicker">EL MOSTRADOR</p>
-    <h2 class="font-display text-3xl md:text-4xl font-bold text-navy" data-i18n="moTitle">¿Qué necesidad operativa tienes hoy?</h2>
-    <p class="mt-3 text-slate-600" data-i18n="moSub">Elige tu reto — la plaza te entrega la micro-app que te ahorra tiempo.</p>
-    <div class="mt-8 grid sm:grid-cols-3 gap-3.5 text-left">
-      <button type="button" class="pain rounded-2xl bg-white border-2 border-slate-200 p-5 flex flex-col gap-2" onclick="goFilter('cobranza')">
-        <span class="text-2xl">💸</span>
-        <span class="font-semibold text-navy leading-snug" data-i18n="pain1">Me deben plata y me da pena cobrar</span>
-        <span class="text-brand font-bold text-sm mt-auto">→</span>
-      </button>
-      <button type="button" class="pain rounded-2xl bg-white border-2 border-slate-200 p-5 flex flex-col gap-2" onclick="goFilter('confeccion')">
-        <span class="text-2xl">✂️</span>
-        <span class="font-semibold text-navy leading-snug" data-i18n="pain2">Corto tela y pierdo plata calculando a ojo</span>
-        <span class="text-brand font-bold text-sm mt-auto">→</span>
-      </button>
-      <button type="button" class="pain rounded-2xl bg-white border-2 border-slate-200 p-5 flex flex-col gap-2" onclick="goFilter('importacion')">
-        <span class="text-2xl">📦</span>
-        <span class="font-semibold text-navy leading-snug" data-i18n="pain3">Importo de China y no sé mi costo real</span>
-        <span class="text-brand font-bold text-sm mt-auto">→</span>
-      </button>
+<!-- APPS -->
+<section id="apps" class="max-w-5xl mx-auto px-5 py-10">
+  <div class="flex flex-wrap items-center justify-between gap-3 mb-6">
+    <h2 class="font-display text-2xl md:text-3xl font-bold text-navy" data-i18n="appsTitle">Las apps</h2>
+    <div class="flex flex-wrap gap-2">
+      <button data-f="all" onclick="setFilter('all')" class="chip on px-4 h-9 rounded-full border border-slate-200 bg-white text-sm font-medium" data-i18n="fAll">Todas</button>
+      <button data-f="cobranza" onclick="setFilter('cobranza')" class="chip px-4 h-9 rounded-full border border-slate-200 bg-white text-sm font-medium" data-i18n="fCobranza">Cobranza</button>
+      <button data-f="confeccion" onclick="setFilter('confeccion')" class="chip px-4 h-9 rounded-full border border-slate-200 bg-white text-sm font-medium" data-i18n="fConfeccion">Confección</button>
+      <button data-f="importacion" onclick="setFilter('importacion')" class="chip px-4 h-9 rounded-full border border-slate-200 bg-white text-sm font-medium" data-i18n="fImportacion">Importación</button>
     </div>
-    <button type="button" class="mt-5 text-sm font-semibold text-navy underline decoration-brand underline-offset-4 hover:text-brand transition" onclick="goFilter('todos')" data-i18n="painAll">Ver todas las apps →</button>
   </div>
-</section>
 
-<!-- ══════ EXPLORADOR ══════ -->
-<section id="apps" class="max-w-6xl mx-auto px-5 py-14">
-  <div class="text-center mb-7">
-    <p class="text-[11px] font-bold uppercase kicker text-brand mb-2" data-i18n="expKicker">EL EXPLORADOR</p>
-    <h2 class="font-display text-3xl font-bold text-navy" data-i18n="moTitle2">Identifica tu cuello de botella</h2>
-  </div>
-  <div id="chips" class="flex flex-wrap justify-center gap-2 mb-2" role="toolbar" aria-label="Filtrar por nicho">
-    <button type="button" class="chip h-10 px-4 rounded-full border border-slate-300 bg-white text-sm font-semibold text-navy hover:border-navy" data-filter="todos" aria-pressed="true" data-i18n="chipAll">Todos</button>
-    <button type="button" class="chip h-10 px-4 rounded-full border border-slate-300 bg-white text-sm font-semibold text-navy hover:border-navy" data-filter="cobranza" aria-pressed="false" data-i18n="chipCob">Cobranza</button>
-    <button type="button" class="chip h-10 px-4 rounded-full border border-slate-300 bg-white text-sm font-semibold text-navy hover:border-navy" data-filter="confeccion" aria-pressed="false" data-i18n="chipCor">Confección</button>
-    <button type="button" class="chip h-10 px-4 rounded-full border border-slate-300 bg-white text-sm font-semibold text-navy hover:border-navy" data-filter="importacion" aria-pressed="false" data-i18n="chipImp">Importación</button>
-  </div>
-  <p id="countTxt" class="text-center text-xs text-slate-400 mb-8" aria-live="polite"></p>
-
-  <div id="grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-
-    <article class="card rounded-3xl bg-white border border-slate-200/80 overflow-hidden flex flex-col" data-nicho="cobranza">
-      <div class="shot-frame relative aspect-[16/10] border-b border-slate-100 bg-[#f3f5f4]"><svg viewBox="0 0 340 210" class="w-full h-full" preserveAspectRatio="xMidYMid slice"><rect width="340" height="210" fill="#ffffff"/><rect width="340" height="34" fill="#34495E"/><circle cx="20" cy="17" r="9" fill="#3AAFA9"/><path d="M23 12l-6 6h4l-2 5 6-7h-4z" fill="#fff"/><rect x="38" y="11" width="70" height="7" rx="3.5" fill="#5ec9c4" opacity=".8"/><rect x="12" y="46" width="74" height="40" rx="8" fill="#F3F5F4" stroke="#E2E8F0"/><rect x="94" y="46" width="74" height="40" rx="8" fill="#F3F5F4" stroke="#E2E8F0"/><rect x="176" y="46" width="74" height="40" rx="8" fill="#F3F5F4" stroke="#E2E8F0"/><rect x="258" y="46" width="70" height="40" rx="8" fill="#F3F5F4" stroke="#E2E8F0"/><rect x="22" y="58" width="34" height="5" rx="2.5" fill="#94A3B8"/><rect x="22" y="68" width="46" height="8" rx="4" fill="#34495E"/><rect x="104" y="58" width="34" height="5" rx="2.5" fill="#94A3B8"/><rect x="104" y="68" width="46" height="8" rx="4" fill="#DC2626"/><rect x="12" y="100" width="316" height="42" rx="10" fill="#fff" stroke="#E2E8F0"/><rect x="24" y="114" width="60" height="7" rx="3.5" fill="#34495E"/><rect x="24" y="126" width="90" height="5" rx="2.5" fill="#94A3B8"/><rect x="230" y="112" width="80" height="18" rx="9" fill="#FEF3C7" stroke="#FCD34D"/><rect x="244" y="117" width="52" height="8" rx="4" fill="#B45309"/><rect x="12" y="152" width="316" height="42" rx="10" fill="#fff" stroke="#E2E8F0"/><rect x="24" y="166" width="60" height="7" rx="3.5" fill="#34495E"/><rect x="230" y="164" width="80" height="18" rx="9" fill="#F1F5F9" stroke="#CBD5E1"/><rect x="246" y="169" width="48" height="8" rx="4" fill="#64748B"/></svg>
-        <span class="absolute top-3 left-3 text-[10px] font-bold uppercase tracking-wide bg-navy text-white rounded-full px-2.5 py-1 shadow-sm" data-i18n="badgeHouse">Selección de la casa</span>
-      </div>
-      <div class="p-6 flex flex-col flex-1">
-        <div class="flex items-center gap-3 mb-3">
-          <div class="w-11 h-11 rounded-2xl bg-brand/10 flex items-center justify-center shrink-0">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3AAFA9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 01-8.5 8.5 8.5 8.5 0 01-3.8-.9L3 21l1.9-5.7a8.5 8.5 0 118.6-3.8"/></svg>
-          </div>
-          <div>
-            <h3 class="font-display font-bold text-xl text-navy leading-tight">CobradorPro</h3>
-            <span class="inline-block mt-0.5 text-[10px] font-bold uppercase tracking-widest text-brand-dark bg-brand/10 rounded-full px-2 py-0.5" data-i18n="catCob">Cobranza</span> <span class="inline-block mt-0.5 text-[9px] font-bold uppercase tracking-widest text-slate-400 bg-slate-100 rounded-full px-2 py-0.5 align-middle" data-i18n="houseTag">App de la casa</span>
-          </div>
+  <div id="appGrid" class="grid md:grid-cols-3 gap-5">
+    <!-- COBRADORPRO -->
+    <article class="card rounded-3xl bg-white border border-slate-200/70 p-6 flex flex-col" data-niche="cobranza">
+      <div class="flex items-start justify-between gap-2 mb-4">
+        <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-brand to-brand-dark flex items-center justify-center shadow-md shadow-brand/25">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
         </div>
-        <p class="text-slate-600 text-sm leading-relaxed flex-1" data-i18n="descCob">¿Tienes clientes que te deben y te da pena cobrarles? Organiza tus deudas, te dice a quién cobrarle hoy y redacta el recordatorio amable por ti.</p>
-        <p class="mt-3 text-[13px] italic text-navy-light border-l-2 border-brand pl-3" data-i18n="verCob">"Para quienes prefieren mil excusas antes que pedir su plata."</p>
-        <p class="mt-2 text-[11px] text-slate-400" data-i18n="noCob">No es para ti si solo cobras al contado.</p>
-        <a href="https://magnatecore.github.io/tapandbuy/venta-cobradorpro.html" target="_self" onclick="beacon('out','cobradorpro')" class="mt-5 w-full text-center rounded-full bg-navy hover:bg-navy-light text-white text-sm font-semibold px-5 py-3 transition" data-i18n="cta">Ver app →</a>
+        <span class="text-[10px] font-bold uppercase tracking-wider rounded-full px-2.5 py-1 bg-miel/15 text-amber-700 border border-miel/30" data-i18n="badgeCobranza">Cobranza</span>
       </div>
-    </article>
-
-    <article class="card rounded-3xl bg-white border border-slate-200/80 overflow-hidden flex flex-col" data-nicho="confeccion">
-      <div class="shot-frame relative aspect-[16/10] border-b border-slate-100 bg-[#f3f5f4]"><svg viewBox="0 0 340 210" class="w-full h-full" preserveAspectRatio="xMidYMid slice"><rect width="340" height="210" fill="#ffffff"/><rect width="340" height="34" fill="#34495E"/><circle cx="20" cy="17" r="9" fill="#E8B04B"/><circle cx="6" cy="6" r="2.4" fill="none" stroke="#fff" stroke-width="1.6"/><circle cx="6" cy="18" r="2.4" fill="none" stroke="#fff" stroke-width="1.6"/><path d="M8.5 8.5L20 20M8.5 15.5L20 4" stroke="#fff" stroke-width="1.6"/><rect x="38" y="11" width="60" height="7" rx="3.5" fill="#f0d68f" opacity=".8"/><rect x="12" y="48" width="200" height="26" rx="8" fill="#fff" stroke="#E2E8F0"/><rect x="22" y="59" width="80" height="6" rx="3" fill="#94A3B8"/><rect x="12" y="84" width="200" height="26" rx="8" fill="#fff" stroke="#E2E8F0"/><rect x="22" y="95" width="60" height="6" rx="3" fill="#94A3B8"/><rect x="12" y="120" width="200" height="26" rx="8" fill="#fff" stroke="#E2E8F0"/><rect x="22" y="131" width="90" height="6" rx="3" fill="#94A3B8"/><rect x="228" y="48" width="100" height="98" rx="12" fill="#34495E"/><rect x="242" y="64" width="72" height="6" rx="3" fill="#5ec9c4"/><rect x="242" y="78" width="52" height="16" rx="6" fill="#fff"/><rect x="242" y="104" width="60" height="5" rx="2.5" fill="#94A3B8"/><rect x="242" y="116" width="44" height="5" rx="2.5" fill="#94A3B8"/><rect x="242" y="132" width="72" height="12" rx="6" fill="#3AAFA9"/></svg></div>
-      <div class="p-6 flex flex-col flex-1">
-        <div class="flex items-center gap-3 mb-3">
-          <div class="w-11 h-11 rounded-2xl bg-miel/10 flex items-center justify-center shrink-0">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E8B04B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M8.5 8.5L20 20M8.5 15.5L20 4"/></svg>
-          </div>
-          <div>
-            <h3 class="font-display font-bold text-xl text-navy leading-tight">CortePro</h3>
-            <span class="inline-block mt-0.5 text-[10px] font-bold uppercase tracking-widest text-navy-light bg-navy/5 rounded-full px-2 py-0.5" data-i18n="catCor">Confección y talleres</span> <span class="inline-block mt-0.5 text-[9px] font-bold uppercase tracking-widest text-slate-400 bg-slate-100 rounded-full px-2 py-0.5 align-middle" data-i18n="houseTag">App de la casa</span>
-          </div>
-        </div>
-        <p class="text-slate-600 text-sm leading-relaxed flex-1" data-i18n="descCor">¿Cortas tela y pierdes plata calculando a ojo? Calcula materiales exactos para tus prendas y cotiza con margen real en segundos.</p>
-        <p class="mt-3 text-[13px] italic text-navy-light border-l-2 border-brand pl-3" data-i18n="verCor">"Para talleres que cotizan con regla, calculadora y fe."</p>
-        <p class="mt-2 text-[11px] text-slate-400" data-i18n="noCor">No es para ti si solo haces una prenda al mes.</p>
-        <a href="https://magnatecore.github.io/tapandbuy/venta-cortepro.html" target="_self" onclick="beacon('out','cortepro')" class="mt-5 w-full text-center rounded-full bg-navy hover:bg-navy-light text-white text-sm font-semibold px-5 py-3 transition" data-i18n="cta">Ver app →</a>
-      </div>
-    </article>
-
-    <article class="card rounded-3xl bg-white border border-slate-200/80 overflow-hidden flex flex-col" data-nicho="importacion">
-      <div class="shot-frame relative aspect-[16/10] border-b border-slate-100 bg-[#f3f5f4]"><svg viewBox="0 0 340 210" class="w-full h-full" preserveAspectRatio="xMidYMid slice"><rect width="340" height="210" fill="#ffffff"/><rect width="340" height="34" fill="#34495E"/><path d="M20 9l7 4v8l-7 4-7-4v-8z" fill="none" stroke="#fff" stroke-width="1.6"/><path d="M13.3 13l6.7 4 6.7-4M20 21v-8" stroke="#fff" stroke-width="1.4"/><rect x="38" y="11" width="66" height="7" rx="3.5" fill="#9db8b4" opacity=".8"/><rect x="12" y="48" width="316" height="30" rx="8" fill="#fff" stroke="#E2E8F0"/><rect x="22" y="60" width="130" height="7" rx="3.5" fill="#64748B"/><rect x="250" y="57" width="60" height="12" rx="6" fill="#E8F5F4"/><rect x="262" y="60" width="38" height="6" rx="3" fill="#2C8A85"/><rect x="12" y="86" width="316" height="30" rx="8" fill="#fff" stroke="#E2E8F0"/><rect x="22" y="98" width="110" height="7" rx="3.5" fill="#64748B"/><rect x="250" y="95" width="60" height="12" rx="6" fill="#E8F5F4"/><rect x="262" y="98" width="38" height="6" rx="3" fill="#2C8A85"/><rect x="12" y="124" width="316" height="30" rx="8" fill="#fff" stroke="#E2E8F0"/><rect x="22" y="136" width="150" height="7" rx="3.5" fill="#64748B"/><rect x="250" y="133" width="60" height="12" rx="6" fill="#E8F5F4"/><rect x="262" y="136" width="38" height="6" rx="3" fill="#2C8A85"/><rect x="12" y="162" width="316" height="36" rx="10" fill="#E8B04B"/><rect x="24" y="176" width="120" height="8" rx="4" fill="#12302D"/><rect x="230" y="172" width="84" height="16" rx="8" fill="#12302D"/><rect x="246" y="176" width="52" height="8" rx="4" fill="#E8B04B"/></svg></div>
-      <div class="p-6 flex flex-col flex-1">
-        <div class="flex items-center gap-3 mb-3">
-          <div class="w-11 h-11 rounded-2xl bg-navy/5 flex items-center justify-center shrink-0">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#34495E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><path d="M3.3 7l8.7 5 8.7-5M12 22V12"/></svg>
-          </div>
-          <div>
-            <h3 class="font-display font-bold text-xl text-navy leading-tight">ImportaPro</h3>
-            <span class="inline-block mt-0.5 text-[10px] font-bold uppercase tracking-widest text-navy-light bg-navy/5 rounded-full px-2 py-0.5" data-i18n="catImp">Importación</span> <span class="inline-block mt-0.5 text-[9px] font-bold uppercase tracking-widest text-slate-400 bg-slate-100 rounded-full px-2 py-0.5 align-middle" data-i18n="houseTag">App de la casa</span>
-          </div>
-        </div>
-        <p class="text-slate-600 text-sm leading-relaxed flex-1" data-i18n="descImp">¿Importas de China y no sabes tu costo real? De los yuanes del proveedor al precio final sugerido, con envío, comisión y tu margen real.</p>
-        <p class="mt-3 text-[13px] italic text-navy-light border-l-2 border-brand pl-3" data-i18n="verImp">"Para importadores que ya perdieron plata por un cálculo a ojo."</p>
-        <p class="mt-2 text-[11px] text-slate-400" data-i18n="noImp">No es para ti si no importas por tu cuenta.</p>
-        <a href="https://magnatecore.github.io/tapandbuy/venta-importapro.html" target="_self" onclick="beacon('out','importapro')" class="mt-5 w-full text-center rounded-full bg-navy hover:bg-navy-light text-white text-sm font-semibold px-5 py-3 transition" data-i18n="cta">Ver app →</a>
-      </div>
-    </article>
-
-  </div>
-  <p class="text-center text-xs text-slate-400 mt-8" data-i18n="priceNote">Precios y planes en la página de cada app — cada creador cobra directo.</p>
-</section>
-
-<!-- ══════ CÓMO FUNCIONA ══════ -->
-<section class="bg-[#f3f5f4] border-y border-slate-100">
-  <div class="max-w-6xl mx-auto px-5 py-16">
-    <div class="text-center mb-10">
-      <p class="text-[11px] font-bold uppercase kicker text-brand mb-2" data-i18n="howKicker">CÓMO FUNCIONA</p>
-      <h2 class="font-display text-3xl font-bold text-navy" data-i18n="howTitle">De tu problema a tu app, en 3 pasos</h2>
-    </div>
-    <div class="grid md:grid-cols-3 gap-5">
-      <div class="rounded-3xl bg-white border border-slate-200/80 p-7">
-        <span class="w-10 h-10 rounded-full bg-navy text-white font-display font-bold flex items-center justify-center mb-4">1</span>
-        <p class="font-display font-bold text-lg text-navy mb-1.5" data-i18n="how1t">Elige tu reto</p>
-        <p class="text-sm text-slate-600 leading-relaxed" data-i18n="how1p">Selecciónalo arriba — la plaza filtra sola las apps de tu nicho.</p>
-      </div>
-      <div class="rounded-3xl bg-white border border-slate-200/80 p-7">
-        <span class="w-10 h-10 rounded-full bg-brand text-white font-display font-bold flex items-center justify-center mb-4">2</span>
-        <p class="font-display font-bold text-lg text-navy mb-1.5" data-i18n="how2t">Estudia la app</p>
-        <p class="text-sm text-slate-600 leading-relaxed" data-i18n="how2p">Mira cómo se ve y qué resuelve. Una sola función, explicada sin rodeos.</p>
-      </div>
-      <div class="rounded-3xl bg-white border border-slate-200/80 p-7">
-        <span class="w-10 h-10 rounded-full bg-miel text-navy font-display font-bold flex items-center justify-center mb-4">3</span>
-        <p class="font-display font-bold text-lg text-navy mb-1.5" data-i18n="how3t">Compra directo al creador</p>
-        <p class="text-sm text-slate-600 leading-relaxed" data-i18n="how3p">Pulsa «Ver app» y paga en la landing del creador, con su propia pasarela. La plaza no cobra comisión.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════ REGLAS + MURO ══════ -->
-<section class="max-w-6xl mx-auto px-5 py-16">
-  <div class="text-center mb-8">
-    <p class="text-[11px] font-bold uppercase kicker text-brand mb-2" data-i18n="rulesK">LAS REGLAS DE LA PLAZA</p>
-    <h2 class="font-display text-3xl font-bold text-navy" data-i18n="rulesTitle">Menos, pero mejor</h2>
-  </div>
-  <div class="grid md:grid-cols-3 gap-5 mb-14">
-    <div class="rounded-2xl bg-[#f3f5f4] border border-slate-100 p-6">
-      <p class="font-display font-bold text-navy mb-1.5" data-i18n="rule1t">Curada, no saturada</p>
-      <p class="text-sm text-slate-600 leading-relaxed" data-i18n="rule1p">Cada app entra por resolver un problema real de un nicho real. Nada de catálogos infinitos donde lo bueno se ahoga.</p>
-    </div>
-    <div class="rounded-2xl bg-[#f3f5f4] border border-slate-100 p-6">
-      <p class="font-display font-bold text-navy mb-1.5" data-i18n="rule2t">Soberanía total</p>
-      <p class="text-sm text-slate-600 leading-relaxed" data-i18n="rule2p">Cero comisiones por venta y cero cajero central: cada creador cobra directo con su propia pasarela.</p>
-    </div>
-    <div class="rounded-2xl bg-[#f3f5f4] border border-slate-100 p-6">
-      <p class="font-display font-bold text-navy mb-1.5" data-i18n="rule3t">Precio justo</p>
-      <p class="text-sm text-slate-600 leading-relaxed" data-i18n="rule3p">Herramientas pensadas para el bolsillo de cualquier emprendedor: una función, hecha perfecta.</p>
-    </div>
-  </div>
-
-  <div class="text-center mb-8">
-    <p class="text-[11px] font-bold uppercase kicker text-miel-dark mb-2" style="color:#b9871f" data-i18n="muroK">EL SELLO PRO</p>
-    <h2 class="font-display text-3xl font-bold text-navy" data-i18n="muroTitle">Distinciones que se ganan aquí</h2>
-    <p class="mt-2 text-slate-600 text-sm" data-i18n="muroSub">Nadie compra prestigio: se exhibe lo que se demuestra.</p>
-  </div>
-  <div class="mt-4 rounded-2xl bg-white border border-slate-200 p-6">
-    <p class="font-display font-bold text-navy text-sm mb-3" data-i18n="sealTitle">Cómo se gana el sello Pro</p>
-    <ul class="text-xs text-slate-500 space-y-1.5">
-      <li data-i18n="seal1">✓ Funciona y se puede probar</li>
-      <li data-i18n="seal2">✓ Resuelve un solo problema de un solo nicho</li>
-      <li data-i18n="seal3">✓ Precio claro y términos propios</li>
-      <li data-i18n="seal4">✓ Soporte real del creador</li>
-      <li data-i18n="seal5">✓ Al menos 30 días en la plaza sin quejas</li>
-    </ul>
-  </div>
-  <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
-    <div class="rounded-2xl border border-slate-200 bg-white p-5"><p class="font-display font-bold text-navy text-sm mb-1">✨ <span data-i18n="mbNew">Nueva</span></p><p class="text-xs text-slate-500 leading-relaxed" data-i18n="mbNewP">Recién publicada en la plaza.</p></div>
-    <div class="rounded-2xl border-2 border-navy bg-white p-5"><p class="font-display font-bold text-navy text-sm mb-1">⭐ <span data-i18n="mbHouse">Selección de la casa</span></p><p class="text-xs text-slate-500 leading-relaxed" data-i18n="mbHouseP">El sello del curador: la app que pondríamos en nuestro propio teléfono.</p></div>
-    <div class="rounded-2xl border-2 border-miel bg-white p-5"><p class="font-display font-bold text-navy text-sm mb-1">💠 <span data-i18n="mbSpon">Destacada</span></p><p class="text-xs text-slate-500 leading-relaxed" data-i18n="mbSponP">Puesto patrocinado — va marcado como tal, siempre.</p></div>
-    <div class="rounded-2xl border border-slate-200 bg-white p-5"><p class="font-display font-bold text-navy text-sm mb-1">🥇 <span data-i18n="mbFirst">Primera en su nicho</span></p><p class="text-xs text-slate-500 leading-relaxed" data-i18n="mbFirstP">La pionera de su categoría. Irrepetible.</p></div>
-  </div>
-  </section>
-
-<section id="creadores" class="max-w-4xl mx-auto px-5 pb-14">
-  <div class="text-center mb-8">
-    <p class="text-[11px] font-bold uppercase kicker text-brand mb-2" data-i18n="crKicker">EL PUESTO EN LA PLAZA</p>
-    <h2 class="font-display text-3xl font-bold text-navy" data-i18n="crTitle">¿Eres creador de una micro app?</h2>
-    <p class="mt-3 text-slate-600 max-w-xl mx-auto leading-relaxed" data-i18n="crSub">Si tu app resuelve un problema real de un nicho real, la plaza te abre sus puertas. Postula — revisamos cada aplicación en menos de 48 horas.</p>
-  </div>
-
-  <div class="grid md:grid-cols-2 gap-5 mb-8">
-    <div class="rounded-3xl bg-white border border-slate-200/70 p-7">
-      <p class="font-display font-bold text-navy mb-4" data-i18n="crIncludes">El puesto incluye</p>
-      <ul class="space-y-3 text-sm text-slate-600">
-        <li class="flex gap-2.5"><span class="text-brand font-bold">✓</span><span data-i18n="crInc1">Puesto destacado en la vitrina, organizado por nicho y problema</span></li>
-        <li class="flex gap-2.5"><span class="text-brand font-bold">✓</span><span data-i18n="crInc2">Enlace directo a tu landing: cobras con tu propia pasarela, cero comisiones nuestras</span></li>
-        <li class="flex gap-2.5"><span class="text-brand font-bold">✓</span><span data-i18n="crInc3">Un puesto en la vitrina por nicho, con enlace directo a tu landing</span></li>
-        <li class="flex gap-2.5"><span class="text-brand font-bold">✓</span><span data-i18n="crInc4">Ficha bilingüe (ES/EN) con tu marca y tu precio</span></li>
+      <h3 class="font-display font-bold text-lg text-navy">Cobrador<span class="text-brand">Pro</span></h3>
+      <p class="text-sm text-slate-600 mt-1.5 leading-relaxed flex-1" data-i18n="cobDesc">¿Le das fiado y no cobras? Registra deudas y envía recordatorios listos para copiar y enviar por tu WhatsApp.</p>
+      <ul class="mt-4 space-y-1.5 text-[13px] text-slate-600">
+        <li class="flex gap-2"><span class="text-brand font-bold">—</span><span data-i18n="cobF1">Dashboard de deudas por cobrar</span></li>
+        <li class="flex gap-2"><span class="text-brand font-bold">—</span><span data-i18n="cobF2">Recordatorios por WhatsApp en 3 tonos</span></li>
+        <li class="flex gap-2"><span class="text-brand font-bold">—</span><span data-i18n="cobF3">Bilingüe ES/EN · sin instalar nada</span></li>
       </ul>
+      <div class="mt-5 flex items-center justify-between gap-2 pt-4 border-t border-slate-100">
+        <span class="text-xs text-slate-500" data-i18n="cobBy">por PromptMagnate Lab</span>
+        <a href="https://magnatecore.github.io/tapandbuy/venta-cobradorpro.html" target="_blank" class="text-sm font-semibold text-brand hover:text-brand-dark transition" data-i18n="seeApp">Ver app →</a>
+      </div>
+    </article>
+
+    <!-- CORTEPRO -->
+    <article class="card rounded-3xl bg-white border border-slate-200/70 p-6 flex flex-col" data-niche="confeccion">
+      <div class="flex items-start justify-between gap-2 mb-4">
+        <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-brand to-brand-dark flex items-center justify-center shadow-md shadow-brand/25">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+        </div>
+        <span class="text-[10px] font-bold uppercase tracking-wider rounded-full px-2.5 py-1 bg-miel/15 text-amber-700 border border-miel/30" data-i18n="badgeConfeccion">Confección</span>
+      </div>
+      <h3 class="font-display font-bold text-lg text-navy">Corte<span class="text-brand">Pro</span></h3>
+      <p class="text-sm text-slate-600 mt-1.5 leading-relaxed flex-1" data-i18n="corDesc">¿Cortas tela a ojo? Calcula consumo por talla con merma, tela angosta y costo estimado. En metros, yardas o pulgadas.</p>
+      <ul class="mt-4 space-y-1.5 text-[13px] text-slate-600">
+        <li class="flex gap-2"><span class="text-brand font-bold">—</span><span data-i18n="corF1">Consumo por talla en vivo</span></li>
+        <li class="flex gap-2"><span class="text-brand font-bold">—</span><span data-i18n="corF2">Merma ajustable y tela angosta</span></li>
+        <li class="flex gap-2"><span class="text-brand font-bold">—</span><span data-i18n="corF3">Bilingüe ES/EN · sin instalar nada</span></li>
+      </ul>
+      <div class="mt-5 flex items-center justify-between gap-2 pt-4 border-t border-slate-100">
+        <span class="text-xs text-slate-500" data-i18n="corBy">por PromptMagnate Lab</span>
+        <a href="https://magnatecore.github.io/tapandbuy/venta-cortepro.html" target="_blank" class="text-sm font-semibold text-brand hover:text-brand-dark transition" data-i18n="seeApp2">Ver app →</a>
+      </div>
+    </article>
+
+    <!-- IMPORTAPRO -->
+    <article class="card rounded-3xl bg-white border border-slate-200/70 p-6 flex flex-col" data-niche="importacion">
+      <div class="flex items-start justify-between gap-2 mb-4">
+        <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-brand to-brand-dark flex items-center justify-center shadow-md shadow-brand/25">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+        </div>
+        <span class="text-[10px] font-bold uppercase tracking-wider rounded-full px-2.5 py-1 bg-miel/15 text-amber-700 border border-miel/30" data-i18n="badgeImportacion">Importación</span>
+      </div>
+      <h3 class="font-display font-bold text-lg text-navy">Importa<span class="text-brand">Pro</span></h3>
+      <p class="text-sm text-slate-600 mt-1.5 leading-relaxed flex-1" data-i18n="impDesc">¿Importas de China a ciegas? Calcula tu costo total y margen real en segundos: producto, envío y comisiones.</p>
+      <ul class="mt-4 space-y-1.5 text-[13px] text-slate-600">
+        <li class="flex gap-2"><span class="text-brand font-bold">—</span><span data-i18n="impF1">Costo total y margen real al instante</span></li>
+        <li class="flex gap-2"><span class="text-brand font-bold">—</span><span data-i18n="impF2">Pesos, yuanes o dólares</span></li>
+        <li class="flex gap-2"><span class="text-brand font-bold">—</span><span data-i18n="impF3">Bilingüe ES/EN · sin instalar nada</span></li>
+      </ul>
+      <div class="mt-5 flex items-center justify-between gap-2 pt-4 border-t border-slate-100">
+        <span class="text-xs text-slate-500" data-i18n="impBy">por PromptMagnate Lab</span>
+        <a href="https://magnatecore.github.io/tapandbuy/venta-importapro.html" target="_blank" class="text-sm font-semibold text-brand hover:text-brand-dark transition" data-i18n="seeApp3">Ver app →</a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- MÉTRICAS -->
+<section id="metricas" class="max-w-5xl mx-auto px-5 py-10">
+  <div class="rounded-3xl border border-slate-200/70 bg-white p-6 md:p-8">
+    <div class="flex items-start justify-between gap-3 flex-wrap mb-5">
+      <div>
+        <h2 class="font-display text-2xl font-bold text-navy" data-i18n="metTitle">Métricas reales</h2>
+        <p class="text-sm text-slate-500 mt-1" data-i18n="metSub">Cifras oficiales del último mes publicado. Sin humo.</p>
+      </div>
+      <span class="text-[10px] font-bold uppercase tracking-wider rounded-full px-2.5 py-1 bg-brand/10 text-brand-dark border border-brand/25">oct 2026</span>
     </div>
-    <div class="rounded-3xl bg-white border border-slate-200/70 p-7">
-      <p class="font-display font-bold text-navy mb-4" data-i18n="crHow">Cómo funciona</p>
-      <ol class="space-y-3 text-sm text-slate-600">
-        <li class="flex gap-2.5"><span class="shrink-0 w-6 h-6 rounded-full bg-brand text-white text-xs font-bold flex items-center justify-center">1</span><span data-i18n="crHow1">Postulas tu app con el formulario de abajo.</span></li>
-        <li class="flex gap-2.5"><span class="shrink-0 w-6 h-6 rounded-full bg-brand text-white text-xs font-bold flex items-center justify-center">2</span><span data-i18n="crHow2">Verificamos que funcione y que encaje en la plaza (máx. 48 h).</span></li>
-        <li class="flex gap-2.5"><span class="shrink-0 w-6 h-6 rounded-full bg-brand text-white text-xs font-bold flex items-center justify-center">3</span><span data-i18n="crHow3">Si entras, activas tu puesto pagando la membresía mensual. Listo.</span></li>
-      </ol>
-      <div class="mt-6 rounded-2xl bg-slate-50 border border-slate-200 px-5 py-4 flex items-center justify-between gap-3">
-        <span class="text-sm text-slate-500" data-i18n="crPriceL">Membresía del puesto</span>
-        <span class="font-display font-bold text-navy text-lg" data-i18n="crPrice">USD 30 / mes · USD 75 / trimestre</span>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div class="rounded-2xl bg-[#f6f7f6] p-4">
+        <p class="text-[11px] uppercase tracking-wide text-slate-500 font-semibold" data-i18n="m1l">Apps vivas</p>
+        <p class="font-display text-2xl font-bold text-navy mt-1">3</p>
       </div>
-      <!-- NOWPAYMENTS: membresía mensual (iid=6231395774) y trimestral (iid=4893303669). IPN de estos links debe apuntar al flujo "ProPlaza — Membresías". -->
-      <div class="mt-4 flex flex-col sm:flex-row gap-2.5">
-        <a href="https://nowpayments.io/payment/?iid=6231395774" target="_blank" class="flex-1 text-center rounded-xl bg-navy hover:bg-navy-dark text-white text-sm font-semibold px-4 py-3 transition" data-i18n="crBtnM">Pagar USD 30 / mes →</a>
-        <a href="https://nowpayments.io/payment/?iid=4893303669" target="_blank" class="flex-1 text-center rounded-xl border-2 border-navy text-navy text-sm font-semibold px-4 py-3 hover:bg-navy hover:text-white transition" data-i18n="crBtnT">Pagar USD 75 / trimestre →</a>
+      <div class="rounded-2xl bg-[#f6f7f6] p-4">
+        <p class="text-[11px] uppercase tracking-wide text-slate-500 font-semibold" data-i18n="m2l">Nichos</p>
+        <p class="font-display text-2xl font-bold text-navy mt-1">3</p>
       </div>
-      <p class="mt-2.5 text-[11px] text-slate-400 leading-snug" data-i18n="crPayNote">Para creadores ya aceptados: el pago activa tu puesto. Si aún no postulas, usa el formulario — verificamos tu app primero.</p>
-      <p class="mt-3 text-[11px] text-slate-400 leading-snug" data-i18n="discl">ProPlaza no garantiza tráfico, clics ni ventas — los números se publican tal como se miden.</p>
-      <p class="mt-1.5 text-[11px] text-slate-400 leading-snug" data-i18n="metPub">Transparencia: la cifra real de visitas de cada mes se publica aquí el día 1.</p>
+      <div class="rounded-2xl bg-[#f6f7f6] p-4">
+        <p class="text-[11px] uppercase tracking-wide text-slate-500 font-semibold" data-i18n="m3l">Creadores en la plaza</p>
+        <p class="font-display text-2xl font-bold text-navy mt-1">1</p>
+      </div>
+      <div class="rounded-2xl bg-[#f6f7f6] p-4">
+        <p class="text-[11px] uppercase tracking-wide text-slate-500 font-semibold" data-i18n="m4l">Comisión por venta</p>
+        <p class="font-display text-2xl font-bold text-navy mt-1">0%</p>
+      </div>
+    </div>
+    <p class="mt-5 text-xs text-slate-400" data-i18n="metNote">Este tablero se actualiza cada mes publicado y se archiva el anterior.</p>
+  </div>
+</section>
+
+<!-- CÓMO FUNCIONA -->
+<section class="max-w-5xl mx-auto px-5 py-10">
+  <h2 class="font-display text-2xl md:text-3xl font-bold text-navy mb-7" data-i18n="howTitle">Cómo funciona la plaza</h2>
+  <div class="grid md:grid-cols-3 gap-5">
+    <div class="rounded-3xl bg-white border border-slate-200/70 p-6">
+      <div class="w-10 h-10 rounded-full bg-gradient-to-br from-brand to-brand-dark text-white font-display font-bold flex items-center justify-center mb-4 shadow-md shadow-brand/25">1</div>
+      <h3 class="font-display font-bold text-lg text-navy mb-1.5" data-i18n="h1t">Elige tu reto</h3>
+      <p class="text-sm text-slate-600 leading-relaxed" data-i18n="h1p">Filtra por nicho: cobranza, confección, importación. Cada app expone UN problema y lo resuelve. Sin features infinitas.</p>
+    </div>
+    <div class="rounded-3xl bg-white border border-slate-200/70 p-6">
+      <div class="w-10 h-10 rounded-full bg-gradient-to-br from-brand to-brand-dark text-white font-display font-bold flex items-center justify-center mb-4 shadow-md shadow-brand/25">2</div>
+      <h3 class="font-display font-bold text-lg text-navy mb-1.5" data-i18n="h2t">Estudia la app</h3>
+      <p class="text-sm text-slate-600 leading-relaxed" data-i18n="h2p">Una sola función, explicada sin rodeos. Mira cómo se ve, qué resuelve y cuánto cuesta. Si no te resuelve, no compres.</p>
+    </div>
+    <div class="rounded-3xl bg-white border border-slate-200/70 p-6">
+      <div class="w-10 h-10 rounded-full bg-gradient-to-br from-brand to-brand-dark text-white font-display font-bold flex items-center justify-center mb-4 shadow-md shadow-brand/25">3</div>
+      <h3 class="font-display font-bold text-lg text-navy mb-1.5" data-i18n="h3t">Compra directo al creador</h3>
+      <p class="text-sm text-slate-600 leading-relaxed" data-i18n="h3p">Sin carrito de la plaza ni comisiones ocultas: pagas en la landing del creador, con su propia pasarela. La plaza cobra 0% por venta.</p>
+    </div>
+  </div>
+</section>
+
+<!-- EL MOSTRADOR -->
+<section id="mostrador" class="max-w-5xl mx-auto px-5 py-10">
+  <div class="rounded-[2rem] p-8 md:p-10 relative overflow-hidden" style="background:linear-gradient(140deg,#34495E 0%,#24374a 100%)">
+    <div class="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-brand/20 blur-3xl pointer-events-none"></div>
+    <div class="relative">
+      <p class="text-[11px] font-bold uppercase tracking-[.25em] text-brand mb-3" data-i18n="mostKicker">El mostrador</p>
+      <h2 class="font-display text-2xl md:text-3xl font-bold text-white mb-6" data-i18n="mostTitle">¿Qué te frena hoy?</h2>
+      <div class="grid md:grid-cols-3 gap-4">
+        <button onclick="trackEvent('Dolor visto','Cobranza','ES')" class="text-left rounded-2xl bg-white/[.06] hover:bg-white/[.12] border border-white/10 p-5 transition group">
+          <p class="text-sm text-slate-300 italic" data-i18n="d1">"Me deben y me da pena cobrar…"</p>
+          <p class="text-brand font-semibold text-sm mt-3 group-hover:underline" data-i18n="d1a">→ Ver app de cobranza</p>
+        </button>
+        <button onclick="trackEvent('Dolor visto','Confeccion','ES')" class="text-left rounded-2xl bg-white/[.06] hover:bg-white/[.12] border border-white/10 p-5 transition group">
+          <p class="text-sm text-slate-300 italic" data-i18n="d2">"Corto tela a ojo y pierdo plata…"</p>
+          <p class="text-brand font-semibold text-sm mt-3 group-hover:underline" data-i18n="d2a">→ Ver app de confección</p>
+        </button>
+        <button onclick="trackEvent('Dolor visto','Importacion','ES')" class="text-left rounded-2xl bg-white/[.06] hover:bg-white/[.12] border border-white/10 p-5 transition group">
+          <p class="text-sm text-slate-300 italic" data-i18n="d3">"Importo de China sin saber mi costo real…"</p>
+          <p class="text-brand font-semibold text-sm mt-3 group-hover:underline" data-i18n="d3a">→ Ver app de importación</p>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SELLO PRO -->
+<section id="sello" class="max-w-5xl mx-auto px-5 py-10">
+  <div class="rounded-3xl bg-white border border-slate-200/70 p-6 md:p-8">
+    <div class="flex items-start justify-between gap-3 flex-wrap mb-4">
+      <div>
+        <h2 class="font-display text-2xl font-bold text-navy" data-i18n="selloTitle">El sello Pro</h2>
+        <p class="text-sm text-slate-500 mt-1 max-w-xl" data-i18n="selloSub">No se compra: se demuestra. Son 5 criterios públicos. La app que los cumple, lo luce en su ficha.</p>
+      </div>
+      <span class="text-4xl">🏆</span>
+    </div>
+    <ol class="grid md:grid-cols-2 gap-3 text-sm text-slate-700">
+      <li class="rounded-xl bg-[#f6f7f6] p-4 flex gap-3"><span class="font-display font-bold text-brand">1</span><span data-i18n="s1">Funciona y se puede probar.</span></li>
+      <li class="rounded-xl bg-[#f6f7f6] p-4 flex gap-3"><span class="font-display font-bold text-brand">2</span><span data-i18n="s2">Resuelve un solo problema de un solo nicho.</span></li>
+      <li class="rounded-xl bg-[#f6f7f6] p-4 flex gap-3"><span class="font-display font-bold text-brand">3</span><span data-i18n="s3">Precio claro y términos propios del creador.</span></li>
+      <li class="rounded-xl bg-[#f6f7f6] p-4 flex gap-3"><span class="font-display font-bold text-brand">4</span><span data-i18n="s4">Soporte real del creador.</span></li>
+      <li class="rounded-xl bg-[#f6f7f6] p-4 flex gap-3"><span class="font-display font-bold text-brand">5</span><span data-i18n="s5">Al menos 30 días en la plaza sin quejas públicas.</span></li>
+    </ol>
+  </div>
+</section>
+
+<!-- CREADORES -->
+<section id="creadores" class="max-w-5xl mx-auto px-5 py-10">
+  <div class="rounded-3xl p-8 md:p-10 relative overflow-hidden" style="background:linear-gradient(140deg,#3AAFA9 0%,#2c8a85 100%)">
+    <div class="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-white/10 blur-3xl pointer-events-none"></div>
+    <div class="relative text-white">
+      <p class="text-[11px] font-bold uppercase tracking-[.25em] text-white/70 mb-3" data-i18n="crKicker">Para creadores</p>
+      <h2 class="font-display text-3xl md:text-4xl font-bold mb-3" data-i18n="crTitle">¿Creas una micro app?</h2>
+      <p class="text-white/90 max-w-2xl leading-relaxed mb-7" data-i18n="crSub">La plaza busca apps de nicho que resuelvan un problema real. Si la tuya lo hace, aquí tiene un puesto — sin comisiones por tus ventas.</p>
+      <div class="grid md:grid-cols-2 gap-3 mb-7 text-sm">
+        <div class="rounded-xl bg-white/10 p-4" data-i18n="crInc1">Puesto destacado en el nicho elegido (tu app se exhibe primero)</div>
+        <div class="rounded-xl bg-white/10 p-4" data-i18n="crInc2">Ficha bilingüe ES/EN con tu branding, precio y enlace directo</div>
+      </div>
+      <div class="flex flex-wrap gap-3">
+        <a href="https://nowpayments.io/payment/?iid=6231395774" target="_blank" class="rounded-full bg-white text-brand-dark font-bold px-6 py-3 shadow-lg" data-i18n="crBtnM">Membresía mensual — USD 30</a>
+        <a href="https://nowpayments.io/payment/?iid=4893303669" target="_blank" class="rounded-full border-2 border-white/70 text-white font-bold px-6 py-3 hover:bg-white/10 transition" data-i18n="crBtnT">Trimestral — USD 75</a>
+      </div>
+      <p class="mt-5 text-xs text-white/70 max-w-xl" data-i18n="crNote">La plaza no garantiza tráfico, clics ni ventas. Garantiza un escaparate honesto y criterios públicos. Si tu app no encaja, te lo decimos antes de cobrarte.</p>
     </div>
   </div>
 
-  <!-- FORMULARIO DE POSTULACIÓN -->
-  <div class="rounded-3xl border-2 border-miel bg-amber-50 p-7 md:p-9 shadow-sm">
-    <p class="text-[11px] font-bold uppercase kicker mb-2" style="color:#b9871f" data-i18n="formKicker">POSTULA TU APP</p>
-    <h3 class="font-display font-bold text-xl text-navy mb-5" data-i18n="formTitle">Cuéntanos de tu micro app</h3>
-    <form id="postForm" class="space-y-4">
-      <div class="grid md:grid-cols-2 gap-4">
-        <div>
-          <label class="text-xs font-semibold text-slate-500 uppercase tracking-wide" data-i18n="fNombre">Tu nombre *</label>
-          <input id="pNombre" required class="mt-1" data-i18n-ph="phNombre" placeholder="¿Quién eres?">
-        </div>
-        <div>
-          <label class="text-xs font-semibold text-slate-500 uppercase tracking-wide" data-i18n="fEmail">Tu correo *</label>
-          <input id="pEmail" required type="email" placeholder="donde@contactarte.com">
-        </div>
-      </div>
-      <div class="grid md:grid-cols-2 gap-4">
-        <div>
-          <label class="text-xs font-semibold text-slate-500 uppercase tracking-wide" data-i18n="fApp">Nombre de tu app *</label>
-          <input id="pApp" required placeholder="MiMicroApp">
-        </div>
-        <div>
-          <label class="text-xs font-semibold text-slate-500 uppercase tracking-wide" data-i18n="fDemo">Link de demo (opcional)</label>
-          <input id="pDemo" type="url" placeholder="https://…">
-        </div>
+  <div class="mt-6 rounded-3xl bg-white border border-slate-200/70 p-6 md:p-8">
+    <h3 class="font-display text-xl font-bold text-navy mb-4" data-i18n="postTitle">Postula tu app</h3>
+    <form id="postForm" class="grid md:grid-cols-2 gap-4" onsubmit="return submitPost(event)">
+      <div>
+        <label class="block text-xs font-semibold uppercase tracking-wide text-slate-500 mb-1" data-i18n="postL1">Tu nombre *</label>
+        <input required id="pName" type="text" class="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand/50" data-i18n-ph="postP1" placeholder="Ana Pérez">
       </div>
       <div>
-        <label class="text-xs font-semibold text-slate-500 uppercase tracking-wide" data-i18n="fProblema">¿Qué problema resuelve? *</label>
-        <textarea id="pProblema" required rows="3" data-i18n-ph="phProblema" placeholder="Describe el problema y tu solución en 2-3 líneas…"></textarea>
+        <label class="block text-xs font-semibold uppercase tracking-wide text-slate-500 mb-1" data-i18n="postL2">Tu correo *</label>
+        <input required id="pMail" type="email" class="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand/50" data-i18n-ph="postP2" placeholder="ana@tudominio.com">
       </div>
-      <label class="flex items-start gap-3 cursor-pointer select-none">
-        <input type="checkbox" id="pConsent" required class="mt-0.5 w-5 h-5 accent-[#3AAFA9]">
-        <span class="text-[13px] text-slate-600 leading-snug" data-i18n="fConsent">Acepto los <a href="terminos-anunciante-proplaza.html" target="_self" class="underline decoration-brand underline-offset-2 font-medium text-navy hover:text-brand transition">Términos del anunciante</a> *</span>
-      </label>
-      <p id="formStatus" class="hidden text-sm font-semibold"></p>
-      <input id="pWeb" type="text" name="web" tabindex="-1" autocomplete="off" aria-hidden="true" class="hidden" style="display:none">
-      <button type="submit" id="pSend" class="w-full h-12 rounded-2xl bg-navy hover:bg-navy-dark text-white font-semibold transition" data-i18n="fSend">Enviar postulación</button>
+      <div>
+        <label class="block text-xs font-semibold uppercase tracking-wide text-slate-500 mb-1" data-i18n="postL3">App / proyecto *</label>
+        <input required id="pApp" type="text" class="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand/50" data-i18n-ph="postP3" placeholder="MiMicroApp">
+      </div>
+      <div>
+        <label class="block text-xs font-semibold uppercase tracking-wide text-slate-500 mb-1" data-i18n="postL4">Nicho *</label>
+        <select required id="pNiche" class="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-brand/50">
+          <option value="" data-i18n="postN0">Elige un nicho…</option>
+          <option value="Cobranza" data-i18n="postN1">Cobranza</option>
+          <option value="Confeccion" data-i18n="postN2">Confección</option>
+          <option value="Importacion" data-i18n="postN3">Importación</option>
+          <option value="Otro" data-i18n="postN4">Otro (cuéntanos cuál)</option>
+        </select>
+      </div>
+      <div class="md:col-span-2">
+        <label class="block text-xs font-semibold uppercase tracking-wide text-slate-500 mb-1" data-i18n="postL5">¿Qué problema resuelve tu app? *</label>
+        <textarea required id="pProb" rows="3" class="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand/50" data-i18n-ph="postP5" placeholder="Ej: ayuda a peluqueras a cobrar las citas sin llamadas incómodas…"></textarea>
+      </div>
+      <div class="md:col-span-2 flex items-start gap-2">
+        <input required id="pTerms" type="checkbox" class="mt-1">
+        <label for="pTerms" class="text-xs text-slate-500" data-i18n="postTerms">Acepto los <a href="terminos-anunciante-proplaza.html" target="_self" class="underline decoration-brand underline-offset-2 font-medium text-navy hover:text-brand transition">Términos del anunciante</a> y entiendo que la plaza revisa cada postulación.</label>
+      </div>
+      <div class="md:col-span-2">
+        <button id="postBtn" type="submit" class="rounded-full bg-gradient-to-r from-brand to-brand-dark text-white font-bold px-8 py-3.5 shadow-md shadow-brand/25 disabled:opacity-50" data-i18n="postBtn">Enviar postulación</button>
+        <p id="postMsg" class="mt-3 text-sm hidden" data-i18n="postOk">¡Postulación recibida! Te contactamos en menos de 48 horas.</p>
+      </div>
     </form>
   </div>
 </section>
 
-</main>
-
-<footer class="border-t border-slate-200/70 py-9 text-center text-sm text-slate-500 px-5">
-  <p data-i18n="f1">© 2026 ProPlaza · La vitrina de Magnate Core · Un producto de PromptMagnate Lab</p>
-  <p class="mt-2.5"><span data-i18n="f2">Contacto:</span> <a class="mp underline decoration-brand underline-offset-2 font-medium text-navy hover:text-brand transition" data-u="promptmagnate.app+proplaza" data-d="gmail.com" target="_self">promptmagnate.app+proplaza&#64;gmail.com</a> · <a href="terminos-anunciante-proplaza.html" target="_self" class="underline decoration-brand underline-offset-2 font-medium text-navy hover:text-brand transition" data-i18n="f3">Términos</a> · <a href="terminos-anunciante-proplaza.html#privacidad" target="_self" class="underline decoration-brand underline-offset-2 font-medium text-navy hover:text-brand transition" data-i18n="f4">Privacidad</a></p>
-  <p class="mt-4 text-[11px] text-slate-400 max-w-xl mx-auto leading-relaxed" data-i18n="fDisc">ProPlaza es un directorio publicitario independiente: las apps de terceros son operadas y facturadas por sus creadores. La plaza no procesa sus pagos ni custodia fondos.</p>
+<footer style="text-align: center; padding: 1.5rem; color: #9ca3af; font-size: 0.875rem;">
+    <p style="margin: 0 0 0.5rem 0;">© 2026 <strong>PromptMagnate Lab</strong> | Innovación en Productos Digitales.</p>
+    <p style="margin: 0; color: #6b7280; font-size: 0.8rem;">Micro Apps · ProPlaza · Magnate Core</p>
 </footer>
 
 <script>
 (function(){
 'use strict';
-var W='https://cloud.activepieces.com/api/v1/webhooks/NStKIgVeebbRDheeFnI28/sync'; // ProPlaza — Postulaciones
-// REEMPLAZO ÚNICO: pegar aquí la URL del flujo "ProPlaza — Métricas" (termina en /sync)
-var WM='https://cloud.activepieces.com/api/v1/webhooks/UUfLifc3XbtxSOcmXXh8h/sync'; // ✅ flujo ProPlaza — Métricas (28 oct)
-function beacon(tipo,detalle){
-  try{
-    if(WM.indexOf('PONER_')===0) return;
-    fetch(WM,{method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({evento:'PP_METRIC',tipo:tipo,detalle:detalle||'',idioma:lang,ts:new Date().toISOString()})});
-  }catch(e){}
-}
-const I18N = { es: {"tagline": "Apps de nicho · sin intermediarios", "navApps": "Apps", "navCreators": "Para creadores", "navTerms": "Términos", "navCreator": "¿Eres creador?", "kicker": "MICRO APPS PARA PROBLEMAS REALES", "heroTitle": "Micro apps para problemas reales. Las que lo demuestran ganan el sello <span class=\"text-brand\">Pro</span>", "heroSub": "Herramientas pequeñas, precisas y en tu idioma — cada una diseñada para <strong class=\"text-navy\">un solo problema de un solo nicho</strong>. Sin comisiones por venta: cada creador cobra directo a su nombre.", "heroCta1": "Explorar la plaza →", "heroCta2": "Quiero un puesto", "statApps": "apps", "statNiches": "nichos", "statFees": "comisión por venta", "moKicker": "EL MOSTRADOR", "moTitle": "¿Qué necesidad operativa tienes hoy?", "moSub": "Elige tu reto — la plaza te entrega la micro-app que te ahorra tiempo.", "pain1": "Me deben plata y me da pena cobrar", "pain2": "Corto tela y pierdo plata calculando a ojo", "pain3": "Importo de China y no sé mi costo real", "painAll": "Ver todas las apps →", "expKicker": "EL EXPLORADOR", "moTitle2": "Identifica tu cuello de botella", "chipAll": "Todos", "chipCob": "Cobranza", "chipCor": "Confección", "chipImp": "Importación", "badgeHouse": "Selección de la casa", "catCob": "Cobranza",
-  "verCob": "\"Para quienes prefieren mil excusas antes que pedir su plata.\"",
-  "noCob": "No es para ti si solo cobras al contado.", "catCor": "Confección y talleres",
-  "verCor": "\"Para talleres que cotizan con regla, calculadora y fe.\"",
-  "noCor": "No es para ti si solo haces una prenda al mes.", "catImp": "Importación",
-  "verImp": "\"Para importadores que ya perdieron plata por un cálculo a ojo.\"",
-  "noImp": "No es para ti si no importas por tu cuenta.", "descCob": "¿Tienes clientes que te deben y te da pena cobrarles? Organiza tus deudas, te dice a quién cobrarle hoy y redacta el recordatorio amable por ti.", "descCor": "¿Cortas tela y pierdes plata calculando a ojo? Calcula materiales exactos para tus prendas y cotiza con margen real en segundos.", "descImp": "¿Importas de China y no sabes tu costo real? De los yuanes del proveedor al precio final sugerido, con envío, comisión y tu margen real.", "cta": "Ver app →", "priceNote": "Precios y planes en la página de cada app — cada creador cobra directo.", "howKicker": "CÓMO FUNCIONA", "howTitle": "De tu problema a tu app, en 3 pasos", "how1t": "Elige tu reto", "how1p": "Selecciónalo arriba — la plaza filtra sola las apps de tu nicho.", "how2t": "Estudia la app", "how2p": "Mira cómo se ve y qué resuelve. Una sola función, explicada sin rodeos.", "how3t": "Compra directo al creador", "how3p": "Pulsa «Ver app» y paga en la landing del creador, con su propia pasarela. La plaza no cobra comisión.", "rulesK": "LAS REGLAS DE LA PLAZA", "rulesTitle": "Menos, pero mejor", "rule1t": "Curada, no saturada", "rule1p": "Cada app entra por resolver un problema real de un nicho real. Nada de catálogos infinitos donde lo bueno se ahoga.", "rule2t": "Soberanía total", "rule2p": "Cero comisiones por venta y cero cajero central: cada creador cobra directo con su propia pasarela.", "rule3t": "Precio justo", "rule3p": "Herramientas pensadas para el bolsillo de cualquier emprendedor: una función, hecha perfecta.", "muroK": "EL SELLO PRO", "muroTitle": "Distinciones que se ganan aquí", "muroSub": "Nadie compra prestigio: se exhibe lo que se demuestra.", "mbNew": "Nueva",
-  "houseTag": "App de la casa",
-  "sealTitle": "Cómo se gana el sello Pro",
-  "seal1": "✓ Funciona y se puede probar",
-  "seal2": "✓ Resuelve un solo problema de un solo nicho",
-  "seal3": "✓ Precio claro y términos propios",
-  "seal4": "✓ Soporte real del creador",
-  "seal5": "✓ Al menos 30 días en la plaza sin quejas", "mbNewP": "Recién publicada en la plaza.", "mbHouse": "Selección de la casa", "mbHouseP": "El sello del curador: la app que pondríamos en nuestro propio teléfono.", "mbSpon": "Destacada", "mbSponP": "Puesto patrocinado — va marcado como tal, siempre.", "mbFirst": "Primera en su nicho", "mbFirstP": "La pionera de su categoría. Irrepetible.", "crKicker": "EL PUESTO EN LA PLAZA", "crTitle": "¿Eres creador de una micro app?", "crSub": "Si tu app resuelve un problema real de un nicho real, la plaza te abre sus puertas. Postula — revisamos cada aplicación en menos de 48 horas.", "crIncludes": "El puesto incluye", "crInc1": "Puesto destacado en la vitrina, organizado por nicho y problema", "crInc2": "Enlace directo a tu landing: cobras con tu propia pasarela, cero comisiones nuestras", "crInc3": "Un puesto en la vitrina por nicho, con enlace directo a tu landing", "crInc4": "Ficha bilingüe (ES/EN) con tu marca y tu precio", "crHow": "Cómo funciona", "crHow1": "Postulas tu app con el formulario de abajo.", "crHow2": "Verificamos que funcione y que encaje en la plaza (máx. 48 h).", "crHow3": "Si entras, activas tu puesto pagando la membresía mensual. Listo.", "discl": "ProPlaza no garantiza tráfico, clics ni ventas — los números se publican tal como se miden.",
-  "metPub": "Transparencia: la cifra real de visitas de cada mes se publica aquí el día 1.",
-  "crPriceL": "Membresía del puesto", "crPrice": "USD 30 / mes · USD 75 / trimestre", "crBtnM": "Pagar USD 30 / mes →", "crBtnT": "Pagar USD 75 / trimestre →", "crPayNote": "Para creadores ya aceptados: el pago activa tu puesto. Si aún no postulas, usa el formulario — verificamos tu app primero.", "formKicker": "POSTULA TU APP", "formTitle": "Cuéntanos de tu micro app", "fNombre": "Tu nombre *", "phNombre": "¿Quién eres?", "fEmail": "Tu correo *", "fApp": "Nombre de tu app *", "fDemo": "Link de demo (opcional)", "fProblema": "¿Qué problema resuelve? *", "phProblema": "Describe el problema y tu solución en 2-3 líneas…", "fConsent": "Acepto los <a href=\"terminos-anunciante-proplaza.html\" target=\"_self\" class=\"underline decoration-brand underline-offset-2 font-medium text-navy hover:text-brand transition\">Términos del anunciante</a> *", "fSend": "Enviar postulación", "fSending": "Enviando…", "fOk": "¡Postulación recibida! Te contactamos en menos de 48 horas.", "fErr": "No se pudo enviar. Escríbenos a promptmagnate.app+proplaza@gmail.com", "f1": "© 2026 ProPlaza · La vitrina de Magnate Core · Un producto de PromptMagnate Lab", "f2": "Contacto:", "f3": "Términos", "f4": "Privacidad", "fDisc": "ProPlaza es un directorio publicitario independiente: las apps de terceros son operadas y facturadas por sus creadores. La plaza no procesa sus pagos ni custodia fondos."}, en: {"tagline": "Niche apps · no middlemen", "navApps": "Apps", "navCreators": "For creators", "navTerms": "Terms", "navCreator": "Are you a creator?", "kicker": "MICRO APPS FOR REAL PROBLEMS", "heroTitle": "Micro apps for real problems. Those that prove it earn the <span class=\"text-brand\">Pro</span> seal", "heroSub": "Small, precise tools in your language — each one built for <strong class=\"text-navy\">one problem in one niche</strong>. No sales commissions: every creator gets paid directly, in their own name.", "heroCta1": "Explore the plaza →", "heroCta2": "I want a stall", "statApps": "apps", "statNiches": "niches", "statFees": "sales commission", "moKicker": "THE COUNTER", "moTitle": "What operational need do you have today?", "moSub": "Pick your challenge — the plaza hands you the micro app that saves you time.", "pain1": "Clients owe me money and chasing them feels awkward", "pain2": "I cut fabric and lose money eyeballing it", "pain3": "I import from China without knowing my real cost", "painAll": "See all apps →", "expKicker": "THE EXPLORER", "moTitle2": "Identify your bottleneck", "chipAll": "All", "chipCob": "Collections", "chipCor": "Sewing", "chipImp": "Importing", "badgeHouse": "House selection", "catCob": "Collections",
-  "verCob": "\"For people who'd rather make a thousand excuses than ask for their money.\"",
-  "noCob": "Not for you if you only take cash upfront.", "catCor": "Sewing & workshops",
-  "verCor": "\"For workshops that quote with ruler, calculator and faith.\"",
-  "noCor": "Not for you if you sew one garment a month.", "catImp": "Importing",
-  "verImp": "\"For importers who've lost money to an eyeball calculation.\"",
-  "noImp": "Not for you if you don't import on your own.", "descCob": "Got clients who owe you but chasing them feels awkward? Organize your debts, see who to collect from today, and get the friendly reminder written for you.", "descCor": "Cut fabric and lose money eyeballing it? Calculate exact materials for your garments and quote with real margin in seconds.", "descImp": "Importing from China without knowing your real cost? From your supplier's price in yuan to the suggested final price, with shipping, fees and your real margin.", "cta": "See app →", "priceNote": "Pricing and plans on each app's page — every creator collects directly.", "howKicker": "HOW IT WORKS", "howTitle": "From your problem to your app, in 3 steps", "how1t": "Pick your challenge", "how1p": "Select it above — the plaza filters the apps in your niche on its own.", "how2t": "Study the app", "how2p": "See what it looks like and what it solves. One function, explained with no fluff.", "how3t": "Buy directly from the creator", "how3p": "Tap “See app” and pay on the creator's landing, through their own gateway. The plaza takes no commission.", "rulesK": "THE RULES OF THE PLAZA", "rulesTitle": "Less, but better", "rule1t": "Curated, not crowded", "rule1p": "Every app gets in by solving a real problem for a real niche. No infinite catalogs where the good stuff drowns.", "rule2t": "Full sovereignty", "rule2p": "Zero sales commissions and zero central cashier: every creator collects directly through their own gateway.", "rule3t": "Fair pricing", "rule3p": "Tools priced for any entrepreneur's pocket: one function, done perfectly.", "muroK": "THE PRO SEAL", "muroTitle": "Distinctions earned here", "muroSub": "Nobody buys prestige: what's proven is what's shown.", "mbNew": "New",
-  "houseTag": "House app",
-  "sealTitle": "How the Pro seal is earned",
-  "seal1": "✓ It works and can be tried",
-  "seal2": "✓ Solves one problem in one niche",
-  "seal3": "✓ Clear pricing and own terms",
-  "seal4": "✓ Real creator support",
-  "seal5": "✓ At least 30 days in the plaza with no complaints", "mbNewP": "Freshly published in the plaza.", "mbHouse": "House selection", "mbHouseP": "The curator's seal: the app we'd put on our own phone.", "mbSpon": "Featured", "mbSponP": "Sponsored stall — always marked as such.", "mbFirst": "First in its niche", "mbFirstP": "The pioneer of its category. Unrepeatable.", "crKicker": "YOUR STALL IN THE PLAZA", "crTitle": "Are you a micro app creator?", "crSub": "If your app solves a real problem for a real niche, the plaza opens its doors. Apply — we review every application within 48 hours.", "crIncludes": "The stall includes", "crInc1": "Featured spot in the showcase, organized by niche and problem", "crInc2": "Direct link to your landing: you collect through your own gateway, zero extra commissions", "crInc3": "A stall in the showcase by niche, with a direct link to your landing", "crInc4": "Bilingual (ES/EN) listing with your brand and your price", "crHow": "How it works", "crHow1": "Apply with the form below.", "crHow2": "We verify it works and fits the plaza (max. 48 h).", "crHow3": "If accepted, you activate your stall by paying the monthly membership. Done.", "discl": "ProPlaza does not guarantee traffic, clicks or sales — numbers are published exactly as measured.",
-  "metPub": "Transparency: each month's real visit count is published here on the 1st.",
-  "crPriceL": "Stall membership", "crPrice": "USD 30 / month · USD 75 / quarter", "crBtnM": "Pay USD 30 / month →", "crBtnT": "Pay USD 75 / quarter →", "crPayNote": "For accepted creators: payment activates your stall. If you haven't applied yet, use the form — we verify your app first.", "formKicker": "SUBMIT YOUR APP", "formTitle": "Tell us about your micro app", "fNombre": "Your name *", "phNombre": "Who are you?", "fEmail": "Your email *", "fApp": "Your app's name *", "fDemo": "Demo link (optional)", "fProblema": "What problem does it solve? *", "phProblema": "Describe the problem and your solution in 2-3 lines…", "fConsent": "I accept the <a href=\"terminos-anunciante-proplaza.html\" target=\"_self\" class=\"underline decoration-brand underline-offset-2 font-medium text-navy hover:text-brand transition\">Advertiser Terms</a> *", "fSend": "Submit application", "fSending": "Sending…", "fOk": "Application received! We will reach out within 48 hours.", "fErr": "Could not send. Write to us at promptmagnate.app+proplaza@gmail.com", "f1": "© 2026 ProPlaza · The Magnate Core showcase · A PromptMagnate Lab product", "f2": "Contact:", "f3": "Terms", "f4": "Privacy", "fDisc": "ProPlaza is an independent advertising directory: third-party apps are operated and billed by their creators. The plaza does not process their payments or hold funds."} };
-let lang='es';
-try{ lang=localStorage.getItem('proplaza-lang')||'es'; }catch(e){}
-function fixEmails(){ document.querySelectorAll("a.mp").forEach(function(a){ a.href="mailto:"+a.dataset.u+"@"+a.dataset.d; }); }
-function applyLang(){
-  document.querySelectorAll('[data-i18n]').forEach(el=>{ const k=el.getAttribute('data-i18n'); if(I18N[lang][k]!==undefined) el.innerHTML=I18N[lang][k]; });
-  document.querySelectorAll('[data-i18n-ph]').forEach(el=>{ const k=el.getAttribute('data-i18n-ph'); if(I18N[lang][k]!==undefined) el.placeholder=I18N[lang][k]; });
-  document.getElementById('langBtn').textContent = lang==='es'?'🇪🇸 ES':'🇬🇧 EN';
-  document.documentElement.lang=lang;
-  fixEmails();
-  updateCount();
-}
-window.toggleLang=function(){ lang=lang==='es'?'en':'es'; beacon('lang',lang); try{localStorage.setItem('proplaza-lang',lang);}catch(e){} applyLang(); };
-
-/* ── filtro por nicho ── */
-window.setFilter=function(f){
-  document.querySelectorAll('#chips .chip').forEach(c=>c.setAttribute('aria-pressed', String(c.dataset.filter===f)));
-  let vis=0;
-  document.querySelectorAll('#grid article').forEach(a=>{
-    const show=(f==='todos'||a.dataset.nicho===f);
-    a.classList.toggle('is-hidden',!show);
-    if(show)vis++;
-  });
-  window._vis=vis; updateCount();
-};
-window.goFilter=function(f){ beacon('pain',f); setFilter(f); document.getElementById('apps').scrollIntoView({behavior:'smooth'}); };
-function updateCount(){
-  const el=document.getElementById('countTxt'); if(!el)return;
-  const vis=window._vis!==undefined?window._vis:document.querySelectorAll('#grid article').length;
-  const total=document.querySelectorAll('#grid article').length;
-  el.textContent = lang==='es' ? ('Mostrando '+vis+' de '+total+' apps') : ('Showing '+vis+' of '+total+' apps');
-}
-document.querySelectorAll('#chips .chip').forEach(c=>c.addEventListener('click',()=>{beacon('filter',c.dataset.filter);setFilter(c.dataset.filter);}));
-
-/* ── contadores animados ── */
-function countUp(){
-  document.querySelectorAll('[data-count]').forEach(el=>{
-    const target=Number(el.getAttribute('data-count')); const t0=performance.now();
-    function step(t){ const p=Math.min(1,(t-t0)/900); el.textContent=Math.round(target*(p*(2-p))); if(p<1)requestAnimationFrame(step); }
-    requestAnimationFrame(step);
-  });
-}
-
-/* ── postulación → webhook ── */
-document.getElementById('postForm').addEventListener('submit', async function(e){
-  e.preventDefault();
-  var st=document.getElementById('formStatus');
-  var btn=document.getElementById('pSend');
-  btn.disabled=true; btn.textContent=I18N[lang]['fSending']||'…';
-  if(document.getElementById('pWeb').value){ btn.disabled=false; return; }
-  var payload={ evento:'POSTULACION_PROPLAZA',
-    nombre:document.getElementById('pNombre').value.trim(),
-    email:document.getElementById('pEmail').value.trim(),
-    app:document.getElementById('pApp').value.trim(),
-    demo:document.getElementById('pDemo').value.trim(),
-    problema:document.getElementById('pProblema').value.trim(),
-    idioma:lang };
-  try{
-    var r=await fetch(W,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
-    if(!r.ok) throw new Error('http '+r.status);
-    st.textContent=I18N[lang]['fOk']; st.className='text-sm font-semibold text-emerald-700'; st.classList.remove('hidden');
-    document.getElementById('postForm').reset();
-  }catch(err){
-    st.textContent=I18N[lang]['fErr']; st.className='text-sm font-semibold text-red-600'; st.classList.remove('hidden');
+const I18N = {
+  es: {
+    tagline:'Apps de nicho · sin intermediarios',
+    kicker:'Micro apps',
+    heroTitle:'Micro apps para problemas reales.',
+    heroSub:'Las que lo demuestran ganan el sello Pro. <strong>Un problema. Un nicho. Sin comisiones.</strong> Explora por dolor, no por hype.',
+    ctaExplore:'Explorar la plaza', ctaCreator:'¿Eres creador?',
+    statApps:'apps', statNiches:'nichos', statCommission:'comisión por venta',
+    appsTitle:'Las apps',
+    fAll:'Todas', fCobranza:'Cobranza', fConfeccion:'Confección', fImportacion:'Importación',
+    badgeCobranza:'Cobranza', badgeConfeccion:'Confección', badgeImportacion:'Importación',
+    cobDesc:'¿Le das fiado y no cobras? Registra deudas y envía recordatorios listos para copiar y enviar por tu WhatsApp.',
+    cobF1:'Dashboard de deudas por cobrar', cobF2:'Recordatorios por WhatsApp en 3 tonos', cobF3:'Bilingüe ES/EN · sin instalar nada',
+    cobBy:'por PromptMagnate Lab', seeApp:'Ver app →',
+    corDesc:'¿Cortas tela a ojo? Calcula consumo por talla con merma, tela angosta y costo estimado. En metros, yardas o pulgadas.',
+    corF1:'Consumo por talla en vivo', corF2:'Merma ajustable y tela angosta', corF3:'Bilingüe ES/EN · sin instalar nada',
+    corBy:'por PromptMagnate Lab', seeApp2:'Ver app →',
+    impDesc:'¿Importas de China a ciegas? Calcula tu costo total y margen real en segundos: producto, envío y comisiones.',
+    impF1:'Costo total y margen real al instante', impF2:'Pesos, yuanes o dólares', impF3:'Bilingüe ES/EN · sin instalar nada',
+    impBy:'por PromptMagnate Lab', seeApp3:'Ver app →',
+    metTitle:'Métricas reales', metSub:'Cifras oficiales del último mes publicado. Sin humo.',
+    m1l:'Apps vivas', m2l:'Nichos', m3l:'Creadores en la plaza', m4l:'Comisión por venta',
+    metNote:'Este tablero se actualiza cada mes publicado y se archiva el anterior.',
+    howTitle:'Cómo funciona la plaza',
+    h1t:'Elige tu reto', h1p:'Filtra por nicho: cobranza, confección, importación. Cada app expone UN problema y lo resuelve. Sin features infinitas.',
+    h2t:'Estudia la app', h2p:'Una sola función, explicada sin rodeos. Mira cómo se ve, qué resuelve y cuánto cuesta. Si no te resuelve, no compres.',
+    h3t:'Compra directo al creador', h3p:'Sin carrito de la plaza ni comisiones ocultas: pagas en la landing del creador, con su propia pasarela. La plaza cobra 0% por venta.',
+    mostKicker:'El mostrador', mostTitle:'¿Qué te frena hoy?',
+    d1:'"Me deben y me da pena cobrar…"', d1a:'→ Ver app de cobranza',
+    d2:'"Corto tela a ojo y pierdo plata…"', d2a:'→ Ver app de confección',
+    d3:'"Importo de China sin saber mi costo real…"', d3a:'→ Ver app de importación',
+    selloTitle:'El sello Pro', selloSub:'No se compra: se demuestra. Son 5 criterios públicos. La app que los cumple, lo luce en su ficha.',
+    s1:'Funciona y se puede probar.', s2:'Resuelve un solo problema de un solo nicho.', s3:'Precio claro y términos propios del creador.', s4:'Soporte real del creador.', s5:'Al menos 30 días en la plaza sin quejas públicas.',
+    crKicker:'Para creadores', crTitle:'¿Creas una micro app?',
+    crSub:'La plaza busca apps de nicho que resuelvan un problema real. Si la tuya lo hace, aquí tiene un puesto — sin comisiones por tus ventas.',
+    crInc1:'Puesto destacado en el nicho elegido (tu app se exhibe primero)', crInc2:'Ficha bilingüe ES/EN con tu branding, precio y enlace directo',
+    crBtnM:'Membresía mensual — USD 30', crBtnT:'Trimestral — USD 75',
+    crNote:'La plaza no garantiza tráfico, clics ni ventas. Garantiza un escaparate honesto y criterios públicos. Si tu app no encaja, te lo decimos antes de cobrarte.',
+    postTitle:'Postula tu app',
+    postL1:'Tu nombre *', postP1:'Ana Pérez',
+    postL2:'Tu correo *', postP2:'ana@tudominio.com',
+    postL3:'App / proyecto *', postP3:'MiMicroApp',
+    postL4:'Nicho *', postN0:'Elige un nicho…', postN1:'Cobranza', postN2:'Confección', postN3:'Importación', postN4:'Otro (cuéntanos cuál)',
+    postL5:'¿Qué problema resuelve tu app? *', postP5:'Ej: ayuda a peluqueras a cobrar las citas sin llamadas incómodas…',
+    postTerms:'Acepto los <a href="terminos-anunciante-proplaza.html" target="_self" class="underline decoration-brand underline-offset-2 font-medium text-navy hover:text-brand transition">Términos del anunciante</a> y entiendo que la plaza revisa cada postulación.',
+    postBtn:'Enviar postulación', postOk:'¡Postulación recibida! Te contactamos en menos de 48 horas.'
+  },
+  en: {
+    tagline:'Niche apps · no middlemen',
+    kicker:'Micro apps',
+    heroTitle:'Micro apps for real problems.',
+    heroSub:'The ones that prove it earn the Pro seal. <strong>One problem. One niche. No commissions.</strong> Browse by pain, not by hype.',
+    ctaExplore:'Explore the plaza', ctaCreator:'Are you a creator?',
+    statApps:'apps', statNiches:'niches', statCommission:'sales commission',
+    appsTitle:'The apps',
+    fAll:'All', fCobranza:'Collections', fConfeccion:'Garment making', fImportacion:'Importing',
+    badgeCobranza:'Collections', badgeConfeccion:'Garment', badgeImportacion:'Importing',
+    cobDesc:'Do you sell on credit and never collect? Log debts and send ready-to-copy payment reminders via your WhatsApp.',
+    cobF1:'Debts-due dashboard', cobF2:'WhatsApp reminders in 3 tones', cobF3:'Bilingual ES/EN · nothing to install',
+    cobBy:'by PromptMagnate Lab', seeApp:'View app →',
+    corDesc:'Do you cut fabric by eye? Calculate consumption per size with waste allowance, narrow fabric and estimated cost. In meters, yards or inches.',
+    corF1:'Live consumption per size', corF2:'Adjustable waste & narrow fabric', corF3:'Bilingual ES/EN · nothing to install',
+    corBy:'by PromptMagnate Lab', seeApp2:'View app →',
+    impDesc:'Do you import from China blind? Calculate your total cost and real margin in seconds: product, shipping and fees.',
+    impF1:'Total cost and real margin instantly', impF2:'Pesos, yuan or dollars', impF3:'Bilingual ES/EN · nothing to install',
+    impBy:'by PromptMagnate Lab', seeApp3:'View app →',
+    metTitle:'Real metrics', metSub:'Official figures from the last published month. No fluff.',
+    m1l:'Live apps', m2l:'Niches', m3l:'Creators in the plaza', m4l:'Sales commission',
+    metNote:'This board updates every published month and archives the previous one.',
+    howTitle:'How the plaza works',
+    h1t:'Pick your challenge', h1p:'Filter by niche: collections, garment making, importing. Each app exposes ONE problem and solves it. No infinite features.',
+    h2t:'Study the app', h2p:'One single function, explained without detours. See how it looks, what it solves and what it costs. If it doesn\'t solve your problem, don\'t buy.',
+    h3t:'Buy directly from the creator', h3p:'No plaza cart or hidden commissions: you pay on the creator\'s landing page, with their own gateway. The plaza takes 0% per sale.',
+    mostKicker:'The counter', mostTitle:'What\'s holding you back today?',
+    d1:'"People owe me and I\'m embarrassed to collect…"', d1a:'→ View collections app',
+    d2:'"I cut fabric by eye and lose money…"', d2a:'→ View garment app',
+    d3:'"I import from China without knowing my real cost…"', d3a:'→ View importing app',
+    selloTitle:'The Pro seal', selloSub:'It\'s not bought: it\'s proven. Five public criteria. The app that meets them, wears it on its card.',
+    s1:'It works and can be tried.', s2:'It solves one single problem for one single niche.', s3:'Clear price and the creator\'s own terms.', s4:'Real creator support.', s5:'At least 30 days in the plaza without public complaints.',
+    crKicker:'For creators', crTitle:'Do you build a micro app?',
+    crSub:'The plaza looks for niche apps that solve a real problem. If yours does, it has a spot here — with no commission on your sales.',
+    crInc1:'Featured spot in your chosen niche (your app is displayed first)', crInc2:'Bilingual ES/EN card with your branding, price and direct link',
+    crBtnM:'Monthly membership — USD 30', crBtnT:'Quarterly — USD 75',
+    crNote:'The plaza does not guarantee traffic, clicks or sales. It guarantees an honest storefront and public criteria. If your app doesn\'t fit, we tell you before charging you.',
+    postTitle:'Submit your app',
+    postL1:'Your name *', postP1:'Ana Pérez',
+    postL2:'Your email *', postP2:'ana@yourdomain.com',
+    postL3:'App / project *', postP3:'MyMicroApp',
+    postL4:'Niche *', postN0:'Pick a niche…', postN1:'Collections', postN2:'Garment making', postN3:'Importing', postN4:'Other (tell us which)',
+    postL5:'What problem does your app solve? *', postP5:'E.g.: helps hair stylists collect for appointments without awkward calls…',
+    postTerms:'I accept the <a href="terminos-anunciante-proplaza.html" target="_self" class="underline decoration-brand underline-offset-2 font-medium text-navy hover:text-brand transition">Advertiser Terms</a> and understand the plaza reviews every submission.',
+    postBtn:'Submit application', postOk:'Application received! We\'ll reach out within 48 hours.'
   }
-  btn.disabled=false; applyLang();
-});
-
-applyLang(); countUp(); updateCount(); beacon('view','');
+};
+let lang='es';
+try{lang=localStorage.getItem('proplaza-lang')||'es';}catch(e){}
+function T(){return I18N[lang];}
+window.toggleLang=function(){lang=lang==='es'?'en':'es';try{localStorage.setItem('proplaza-lang',lang);}catch(e){}apply();};
+function apply(){
+  document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n');if(T()[k]!==undefined)el.innerHTML=T()[k];});
+  document.querySelectorAll('[data-i18n-ph]').forEach(el=>{const k=el.getAttribute('data-i18n-ph');if(T()[k]!==undefined)el.placeholder=T()[k];});
+  document.getElementById('langBtn').textContent=lang==='es'?'🇪🇸 ES':'🇬🇧 EN';
+  document.documentElement.lang=lang;
+  document.title = lang==='es' ? 'ProPlaza — Micro apps para problemas reales' : 'ProPlaza — Micro apps for real problems';
+}
+window.setFilter=function(f){
+  document.querySelectorAll('.chip').forEach(c=>c.classList.toggle('on',c.dataset.f===f));
+  document.querySelectorAll('#appGrid article').forEach(a=>{
+    a.style.display=(f==='all'||a.dataset.niche===f)?'flex':'none';
+  });
+};
+window.trackEvent=async function(accion,nicho,idioma){
+  try{
+    await fetch('https://cloud.activepieces.com/api/v1/webhooks/UUfLifc3XbtxSOcmXXh8h',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({accion:accion,app:'ProPlaza',nicho:nicho,idioma:idioma})
+    });
+  }catch(e){}
+};
+window.submitPost=async function(ev){
+  ev.preventDefault();
+  const btn=document.getElementById('postBtn'),msg=document.getElementById('postMsg');
+  btn.disabled=true;btn.textContent='Enviando…';
+  const payload={
+    nombre:document.getElementById('pName').value.trim(),
+    email:document.getElementById('pMail').value.trim(),
+    app:document.getElementById('pApp').value.trim(),
+    nicho:document.getElementById('pNiche').value,
+    problema:document.getElementById('pProb').value.trim(),
+    idioma:lang
+  };
+  try{
+    const r=await fetch('https://cloud.activepieces.com/api/v1/webhooks/NStKIgVeebbRDheeFnI28/sync',{
+      method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)
+    });
+    if(!r.ok)throw new Error('http '+r.status);
+    btn.textContent='✓ Enviado';msg.classList.remove('hidden');
+    document.getElementById('postForm').reset();
+  }catch(e){
+    btn.disabled=false;btn.textContent=lang==='es'?'Enviar postulación':'Submit application';
+    alert(lang==='es'?'No se pudo enviar. Intenta de nuevo.':'Could not send. Please try again.');
+  }
+  return false;
+};
+apply();
 })();
 </script>
 </body>
