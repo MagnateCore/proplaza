@@ -30,6 +30,9 @@ tailwind.config = {
   .chip.on { background:#34495E; color:#fff; border-color:#34495E; }
   ::-webkit-scrollbar { width:8px; } ::-webkit-scrollbar-thumb { background:#cbd5e1; border-radius:8px; }
 </style>
+<!-- Links de pago NOWPayments (enviar SOLO por correo tras aprobar una postulación):
+     Mensual:   https://nowpayments.io/payment/?iid=6231395774
+     Trimestre: https://nowpayments.io/payment/?iid=4893303669 -->
 <base target="_blank">
 </head>
 <body class="bg-[#f6f7f6] text-slate-800">
@@ -253,20 +256,22 @@ tailwind.config = {
       <h2 class="font-display text-3xl md:text-4xl font-bold mb-3" data-i18n="crTitle">¿Creas una micro app?</h2>
       <p class="text-white/90 max-w-2xl leading-relaxed mb-7" data-i18n="crSub">La plaza busca apps de nicho que resuelvan un problema real. Si la tuya lo hace, aquí tiene un puesto — sin comisiones por tus ventas.</p>
       <div class="grid md:grid-cols-2 gap-3 mb-7 text-sm">
-        <div class="rounded-xl bg-white/10 p-4" data-i18n="crInc1">Puesto destacado en el nicho elegido (tu app se exhibe primero)</div>
+        <div class="rounded-xl bg-white/10 p-4" data-i18n="crInc1">Puesto destacado en tu nicho: se exhibe por encima de las apps de la casa</div>
         <div class="rounded-xl bg-white/10 p-4" data-i18n="crInc2">Ficha bilingüe ES/EN con tu branding, precio y enlace directo</div>
       </div>
-      <div class="flex flex-wrap gap-3">
-        <a href="https://nowpayments.io/payment/?iid=6231395774" target="_blank" class="rounded-full bg-white text-brand-dark font-bold px-6 py-3 shadow-lg" data-i18n="crBtnM">Membresía mensual — USD 30</a>
-        <a href="https://nowpayments.io/payment/?iid=4893303669" target="_blank" class="rounded-full border-2 border-white/70 text-white font-bold px-6 py-3 hover:bg-white/10 transition" data-i18n="crBtnT">Trimestral — USD 75</a>
+      <div class="flex flex-wrap items-center gap-3 mb-2">
+        <span class="rounded-full bg-white/20 px-5 py-2.5 font-bold text-sm">USD 30/mes · USD 75/trimestre</span>
+        <a href="#postForm" target="_self" class="rounded-full bg-white text-brand-dark font-bold px-6 py-3 shadow-lg" data-i18n="crBtnC">Postula primero</a>
       </div>
-      <p class="mt-5 text-xs text-white/70 max-w-xl" data-i18n="crNote">La plaza no garantiza tráfico, clics ni ventas. Garantiza un escaparate honesto y criterios públicos. Si tu app no encaja, te lo decimos antes de cobrarte.</p>
+      <p class="text-xs text-white/80 max-w-xl" data-i18n="crPay">El link de pago llega por correo cuando tu app es aprobada. Así nunca pagas antes de saber que encajas.</p>
+      <p class="mt-3 text-xs text-white/70 max-w-xl" data-i18n="crNote">La plaza no garantiza tráfico, clics ni ventas. Garantiza un escaparate honesto y criterios públicos.</p>
     </div>
   </div>
 
   <div class="mt-6 rounded-3xl bg-white border border-slate-200/70 p-6 md:p-8">
     <h3 class="font-display text-xl font-bold text-navy mb-4" data-i18n="postTitle">Postula tu app</h3>
     <form id="postForm" class="grid md:grid-cols-2 gap-4" onsubmit="return submitPost(event)">
+      <input id="pWeb" type="text" name="web" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
       <div>
         <label class="block text-xs font-semibold uppercase tracking-wide text-slate-500 mb-1" data-i18n="postL1">Tu nombre *</label>
         <input required id="pName" type="text" class="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand/50" data-i18n-ph="postP1" placeholder="Ana Pérez">
@@ -348,9 +353,10 @@ const I18N = {
     s1:'Funciona y se puede probar.', s2:'Resuelve un solo problema de un solo nicho.', s3:'Precio claro y términos propios del creador.', s4:'Soporte real del creador.', s5:'Al menos 30 días en la plaza sin quejas públicas.',
     crKicker:'Para creadores', crTitle:'¿Creas una micro app?',
     crSub:'La plaza busca apps de nicho que resuelvan un problema real. Si la tuya lo hace, aquí tiene un puesto — sin comisiones por tus ventas.',
-    crInc1:'Puesto destacado en el nicho elegido (tu app se exhibe primero)', crInc2:'Ficha bilingüe ES/EN con tu branding, precio y enlace directo',
-    crBtnM:'Membresía mensual — USD 30', crBtnT:'Trimestral — USD 75',
-    crNote:'La plaza no garantiza tráfico, clics ni ventas. Garantiza un escaparate honesto y criterios públicos. Si tu app no encaja, te lo decimos antes de cobrarte.',
+    crInc1:'Puesto destacado en tu nicho: se exhibe por encima de las apps de la casa', crInc2:'Ficha bilingüe ES/EN con tu branding, precio y enlace directo',
+    crBtnC:'Postula primero',
+    crPay:'El link de pago llega por correo cuando tu app es aprobada. Así nunca pagas antes de saber que encajas.',
+    crNote:'La plaza no garantiza tráfico, clics ni ventas. Garantiza un escaparate honesto y criterios públicos.',
     postTitle:'Postula tu app',
     postL1:'Tu nombre *', postP1:'Ana Pérez',
     postL2:'Tu correo *', postP2:'ana@tudominio.com',
@@ -384,19 +390,20 @@ const I18N = {
     metNote:'This board updates every published month and archives the previous one.',
     howTitle:'How the plaza works',
     h1t:'Pick your challenge', h1p:'Filter by niche: collections, garment making, importing. Each app exposes ONE problem and solves it. No infinite features.',
-    h2t:'Study the app', h2p:'One single function, explained without detours. See how it looks, what it solves and what it costs. If it doesn\'t solve your problem, don\'t buy.',
-    h3t:'Buy directly from the creator', h3p:'No plaza cart or hidden commissions: you pay on the creator\'s landing page, with their own gateway. The plaza takes 0% per sale.',
-    mostKicker:'The counter', mostTitle:'What\'s holding you back today?',
-    d1:'"People owe me and I\'m embarrassed to collect…"', d1a:'→ View collections app',
+    h2t:'Study the app', h2p:'One single function, explained without detours. See how it looks, what it solves and what it costs. If it doesn't solve your problem, don't buy.',
+    h3t:'Buy directly from the creator', h3p:'No plaza cart or hidden commissions: you pay on the creator's landing page, with their own gateway. The plaza takes 0% per sale.',
+    mostKicker:'The counter', mostTitle:'What's holding you back today?',
+    d1:'"People owe me and I'm embarrassed to collect…"', d1a:'→ View collections app',
     d2:'"I cut fabric by eye and lose money…"', d2a:'→ View garment app',
     d3:'"I import from China without knowing my real cost…"', d3a:'→ View importing app',
-    selloTitle:'The Pro seal', selloSub:'It\'s not bought: it\'s proven. Five public criteria. The app that meets them, wears it on its card.',
-    s1:'It works and can be tried.', s2:'It solves one single problem for one single niche.', s3:'Clear price and the creator\'s own terms.', s4:'Real creator support.', s5:'At least 30 days in the plaza without public complaints.',
+    selloTitle:'The Pro seal', selloSub:'It's not bought: it's proven. Five public criteria. The app that meets them, wears it on its card.',
+    s1:'It works and can be tried.', s2:'It solves one single problem for one single niche.', s3:'Clear price and the creator's own terms.', s4:'Real creator support.', s5:'At least 30 days in the plaza without public complaints.',
     crKicker:'For creators', crTitle:'Do you build a micro app?',
     crSub:'The plaza looks for niche apps that solve a real problem. If yours does, it has a spot here — with no commission on your sales.',
-    crInc1:'Featured spot in your chosen niche (your app is displayed first)', crInc2:'Bilingual ES/EN card with your branding, price and direct link',
-    crBtnM:'Monthly membership — USD 30', crBtnT:'Quarterly — USD 75',
-    crNote:'The plaza does not guarantee traffic, clicks or sales. It guarantees an honest storefront and public criteria. If your app doesn\'t fit, we tell you before charging you.',
+    crInc1:'Featured spot in your niche: displayed above the plaza's own apps', crInc2:'Bilingual ES/EN card with your branding, price and direct link',
+    crBtnC:'Apply first',
+    crPay:'The payment link arrives by email once your app is approved. You never pay before knowing you fit.',
+    crNote:'The plaza does not guarantee traffic, clicks or sales. It guarantees an honest storefront and public criteria.',
     postTitle:'Submit your app',
     postL1:'Your name *', postP1:'Ana Pérez',
     postL2:'Your email *', postP2:'ana@yourdomain.com',
@@ -404,7 +411,7 @@ const I18N = {
     postL4:'Niche *', postN0:'Pick a niche…', postN1:'Collections', postN2:'Garment making', postN3:'Importing', postN4:'Other (tell us which)',
     postL5:'What problem does your app solve? *', postP5:'E.g.: helps hair stylists collect for appointments without awkward calls…',
     postTerms:'I accept the <a href="terminos-anunciante-proplaza.html" target="_self" class="underline decoration-brand underline-offset-2 font-medium text-navy hover:text-brand transition">Advertiser Terms</a> and understand the plaza reviews every submission.',
-    postBtn:'Submit application', postOk:'Application received! We\'ll reach out within 48 hours.'
+    postBtn:'Submit application', postOk:'Application received! We'll reach out within 48 hours.'
   }
 };
 let lang='es';
@@ -435,6 +442,7 @@ window.trackEvent=async function(accion,nicho,idioma){
 window.submitPost=async function(ev){
   ev.preventDefault();
   const btn=document.getElementById('postBtn'),msg=document.getElementById('postMsg');
+  if(document.getElementById('pWeb').value){btn.disabled=true;btn.textContent='✓ Enviado';return false;}
   btn.disabled=true;btn.textContent='Enviando…';
   const payload={
     nombre:document.getElementById('pName').value.trim(),
