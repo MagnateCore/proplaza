@@ -98,7 +98,7 @@ tailwind.config = {
         <li class="flex gap-2"><span class="text-brand font-bold">—</span><span data-i18n="cobF3">Bilingüe ES/EN · sin instalar nada</span></li>
       </ul>
       <div class="mt-5 flex items-center justify-between gap-2 pt-4 border-t border-slate-100">
-        <span class="text-xs text-slate-500" data-i18n="cobBy">por PromptMagnate Lab</span>
+        <span class="text-xs text-slate-500" data-i18n="cobBy">App de la casa · PromptMagnate Lab</span>
         <a href="https://magnatecore.github.io/tapandbuy/venta-cobradorpro.html" target="_blank" class="text-sm font-semibold text-brand hover:text-brand-dark transition" data-i18n="seeApp">Ver app →</a>
       </div>
     </article>
@@ -119,7 +119,7 @@ tailwind.config = {
         <li class="flex gap-2"><span class="text-brand font-bold">—</span><span data-i18n="corF3">Bilingüe ES/EN · sin instalar nada</span></li>
       </ul>
       <div class="mt-5 flex items-center justify-between gap-2 pt-4 border-t border-slate-100">
-        <span class="text-xs text-slate-500" data-i18n="corBy">por PromptMagnate Lab</span>
+        <span class="text-xs text-slate-500" data-i18n="corBy">App de la casa · PromptMagnate Lab</span>
         <a href="https://magnatecore.github.io/tapandbuy/venta-cortepro.html" target="_blank" class="text-sm font-semibold text-brand hover:text-brand-dark transition" data-i18n="seeApp2">Ver app →</a>
       </div>
     </article>
@@ -140,7 +140,7 @@ tailwind.config = {
         <li class="flex gap-2"><span class="text-brand font-bold">—</span><span data-i18n="impF3">Bilingüe ES/EN · sin instalar nada</span></li>
       </ul>
       <div class="mt-5 flex items-center justify-between gap-2 pt-4 border-t border-slate-100">
-        <span class="text-xs text-slate-500" data-i18n="impBy">por PromptMagnate Lab</span>
+        <span class="text-xs text-slate-500" data-i18n="impBy">App de la casa · PromptMagnate Lab</span>
         <a href="https://magnatecore.github.io/tapandbuy/venta-importapro.html" target="_blank" class="text-sm font-semibold text-brand hover:text-brand-dark transition" data-i18n="seeApp3">Ver app →</a>
       </div>
     </article>
@@ -191,7 +191,7 @@ tailwind.config = {
     <div class="rounded-3xl bg-white border border-slate-200/70 p-6">
       <div class="w-10 h-10 rounded-full bg-gradient-to-br from-brand to-brand-dark text-white font-display font-bold flex items-center justify-center mb-4 shadow-md shadow-brand/25">2</div>
       <h3 class="font-display font-bold text-lg text-navy mb-1.5" data-i18n="h2t">Estudia la app</h3>
-      <p class="text-sm text-slate-600 leading-relaxed" data-i18n="h2p">Una sola función, explicada sin rodeos. Mira cómo se ve, qué resuelve y cuánto cuesta. Si no te resuelve, no compres.</p>
+      <p class="text-sm text-slate-600 leading-relaxed" data-i18n="h2p">Una sola función, explicada sin rodeos. En la ficha de cada app ves cómo se ve, qué resuelve y cuánto cuesta. Si no te resuelve, no compres.</p>
     </div>
     <div class="rounded-3xl bg-white border border-slate-200/70 p-6">
       <div class="w-10 h-10 rounded-full bg-gradient-to-br from-brand to-brand-dark text-white font-display font-bold flex items-center justify-center mb-4 shadow-md shadow-brand/25">3</div>
@@ -299,7 +299,7 @@ tailwind.config = {
       </div>
       <div class="md:col-span-2 flex items-start gap-2">
         <input required id="pTerms" type="checkbox" class="mt-1">
-        <label for="pTerms" class="text-xs text-slate-500" data-i18n="postTerms">Acepto los <a href="terminos-anunciante-proplaza.html" target="_self" class="underline decoration-brand underline-offset-2 font-medium text-navy hover:text-brand transition">Términos del anunciante</a> y entiendo que la plaza revisa cada postulación.</label>
+        <label for="pTerms" class="text-xs text-slate-500" data-i18n="postTerms">Acepto los <a href="terminos-anunciante-proplaza.html" target="_blank" rel="noopener" class="underline decoration-brand underline-offset-2 font-medium text-navy hover:text-brand transition">Términos del anunciante</a> y entiendo que la plaza revisa cada postulación.</label>
       </div>
       <div class="md:col-span-2">
         <button id="postBtn" type="submit" class="rounded-full bg-gradient-to-r from-brand to-brand-dark text-white font-bold px-8 py-3.5 shadow-md shadow-brand/25 disabled:opacity-50" data-i18n="postBtn">Enviar postulación</button>
@@ -309,10 +309,155 @@ tailwind.config = {
   </div>
 </section>
 
-<footer style="text-align: center; padding: 1.5rem; color: #9ca3af; font-size: 0.875rem;">
-    <p style="margin: 0 0 0.5rem 0;">© 2026 <strong>PromptMagnate Lab</strong> | Innovación en Productos Digitales.</p>
-    <p style="margin: 0; color: #6b7280; font-size: 0.8rem;">Micro Apps · ProPlaza · Magnate Core</p>
+<!-- FOOTER LEGAL -->
+<footer id="pp-legal-footer" class="mt-14 border-t border-slate-200 pt-6 pb-8 text-xs text-slate-500">
+  <div class="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-3 px-5">
+    <span id="pp-legal-copy" class="font-medium text-slate-500">© 2026 PromptMagnate Lab · ProPlaza.</span>
+
+    <button
+      type="button"
+      id="pp-legal-tab-btn"
+      aria-expanded="false"
+      aria-controls="pp-legal-drawer"
+      class="inline-flex items-center gap-2 rounded-lg border border-slate-300 bg-white px-3 py-1.5 font-medium text-slate-700 transition hover:border-brand/60 hover:text-brand-dark focus:outline-none focus:ring-2 focus:ring-brand/40"
+    >
+      <span id="pp-legal-tab-label">Aviso legal y datos</span>
+      <span id="pp-legal-tab-icon" aria-hidden="true" class="text-[11px] opacity-80">▼</span>
+    </button>
+  </div>
+
+  <div
+    id="pp-legal-drawer"
+    role="region"
+    aria-labelledby="pp-legal-panel-title"
+    hidden
+    class="mx-auto mt-3 max-w-5xl px-5"
+  >
+    <div class="rounded-xl border border-slate-200 bg-white p-4 text-left leading-relaxed text-slate-600 shadow-lg space-y-3">
+      <div class="flex items-center justify-between border-b border-slate-200 pb-2">
+        <span id="pp-legal-panel-title" class="text-[11px] font-semibold uppercase tracking-wider text-brand-dark">
+          Marco técnico, privacidad y alcance
+        </span>
+        <button
+          type="button"
+          id="pp-legal-close-btn"
+          aria-label="Cerrar aviso legal"
+          class="text-[11px] font-medium text-slate-500 hover:text-navy"
+        >
+          Cerrar ✕
+        </button>
+      </div>
+
+      <p id="pp-legal-privacy" class="text-xs text-slate-600"></p>
+      <p id="pp-legal-scope" class="text-xs text-slate-600"></p>
+      <p id="pp-legal-summary-note" class="text-[11px] text-slate-500"></p>
+    </div>
+  </div>
 </footer>
+
+<script>
+(function () {
+  const I18N = {
+    es: {
+      copy: "© 2026 PromptMagnate Lab · ProPlaza. Vitrina de micro apps.",
+      tabLabel: "Aviso legal y datos",
+      panelTitle: "Marco técnico, privacidad y alcance",
+      closeBtn: "Cerrar ✕",
+      closeAria: "Cerrar aviso legal",
+      privacy:
+        "<strong>Privacidad y tratamiento de datos:</strong> ProPlaza opera como vitrina sin cuentas de usuario. Las visitas se miden con <strong>GoatCounter</strong>, conforme a su configuración activa. Cuando eliges un problema en «El mostrador», se registra un evento anónimo (nicho e idioma) en nuestro flujo de <strong>Activepieces</strong>. Si envías el formulario de postulación, los datos ingresados (nombre, correo, app, nicho y descripción del problema) se transmiten a través de <strong>Activepieces</strong> para revisar y gestionar la solicitud; esos servicios pueden procesar o conservar los datos según su configuración y políticas. ProPlaza no los publica en el catálogo ni los comercializa.",
+      scope:
+        "<strong>Descargo de responsabilidad y relación con creadores:</strong> ProPlaza ofrece un espacio de exhibición informativo bajo un esquema <em>&ldquo;tal cual&rdquo;</em> (<em>as-is</em>), sin garantías implícitas ni asesoría legal, contable, fiscal o financiera, y no garantiza que las aplicaciones de terceros estén disponibles, funcionen de forma ininterrumpida o produzcan determinados resultados. Cada creador administra su propio producto, define sus condiciones comerciales, responde por su funcionamiento, soporte y políticas, y gestiona directamente los acuerdos y pagos con los compradores. <strong>ProPlaza no procesa los pagos de los compradores.</strong>",
+      summaryNote:
+        "Aviso resumido. Las condiciones para creadores están en los Términos del anunciante."
+    },
+    en: {
+      copy: "© 2026 PromptMagnate Lab · ProPlaza. Micro apps showcase.",
+      tabLabel: "Legal & Data Notice",
+      panelTitle: "Technical Scope, Privacy & Disclaimer",
+      closeBtn: "Close ✕",
+      closeAria: "Close legal notice",
+      privacy:
+        "<strong>Privacy & Data Handling:</strong> ProPlaza operates as a showcase without user accounts. Visits are measured with <strong>GoatCounter</strong>, under its active configuration. When you pick a problem in “The counter”, an anonymous event (niche and language) is logged in our <strong>Activepieces</strong> workflow. If you submit the application form, the entered details (name, email, app, niche, and problem description) are routed through <strong>Activepieces</strong> to review and process the submission; those services may process or retain the data under their own setup and policies. ProPlaza neither publishes submissions in the catalog nor sells the data.",
+      scope:
+        "<strong>Disclaimer & Creator Relationship:</strong> ProPlaza provides an informational showcase on an <em>&ldquo;as-is&rdquo;</em> basis without implied warranties or legal, accounting, tax, or financial advice, and does not guarantee that third-party applications will remain available, operate continuously, or achieve specific results. Each creator manages their own product, sets their commercial terms, is responsible for their tool's operation, support, and policies, and handles agreements and payments directly with buyers. <strong>ProPlaza does not process buyer payments.</strong>",
+      summaryNote:
+        "Summary notice. The conditions for creators are in the Advertiser Terms."
+    }
+  };
+
+  function detectLang() {
+    const docLang = (document.documentElement.getAttribute("lang") || "").toLowerCase();
+    return docLang.startsWith("en") ? "en" : "es";
+  }
+
+  function applyLang() {
+    const t = I18N[detectLang()];
+
+    const copyEl = document.getElementById("pp-legal-copy");
+    const tabLabelEl = document.getElementById("pp-legal-tab-label");
+    const panelTitleEl = document.getElementById("pp-legal-panel-title");
+    const closeBtnEl = document.getElementById("pp-legal-close-btn");
+    const privacyEl = document.getElementById("pp-legal-privacy");
+    const scopeEl = document.getElementById("pp-legal-scope");
+    const summaryNoteEl = document.getElementById("pp-legal-summary-note");
+
+    if (copyEl) copyEl.textContent = t.copy;
+    if (tabLabelEl) tabLabelEl.textContent = t.tabLabel;
+    if (panelTitleEl) panelTitleEl.textContent = t.panelTitle;
+    if (closeBtnEl) {
+      closeBtnEl.textContent = t.closeBtn;
+      closeBtnEl.setAttribute("aria-label", t.closeAria);
+    }
+    if (privacyEl) privacyEl.innerHTML = t.privacy;
+    if (scopeEl) scopeEl.innerHTML = t.scope;
+    if (summaryNoteEl) summaryNoteEl.textContent = t.summaryNote;
+  }
+
+  function isDrawerOpen() {
+    const drawer = document.getElementById("pp-legal-drawer");
+    return Boolean(drawer && !drawer.hidden);
+  }
+
+  function setDrawerOpen(open) {
+    const drawer = document.getElementById("pp-legal-drawer");
+    const btn = document.getElementById("pp-legal-tab-btn");
+    const icon = document.getElementById("pp-legal-tab-icon");
+    if (!drawer || !btn) return;
+
+    drawer.hidden = !open;
+    btn.setAttribute("aria-expanded", String(open));
+    if (icon) icon.textContent = open ? "▲" : "▼";
+  }
+
+  document.addEventListener("click", function (e) {
+    if (e.target.closest("#pp-legal-tab-btn")) {
+      setDrawerOpen(!isDrawerOpen());
+    } else if (e.target.closest("#pp-legal-close-btn")) {
+      setDrawerOpen(false);
+    }
+  });
+
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && isDrawerOpen()) {
+      setDrawerOpen(false);
+      const btn = document.getElementById("pp-legal-tab-btn");
+      if (btn) btn.focus();
+    }
+  });
+
+  // El script principal de la página cambia el atributo lang de <html> al alternar ES/EN:
+  // este observador reacciona a ese cambio y traduce el panel.
+  const htmlObserver = new MutationObserver(applyLang);
+  htmlObserver.observe(document.documentElement, { attributes: true, attributeFilter: ["lang"] });
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", applyLang, { once: true });
+  } else {
+    applyLang();
+  }
+})();
+</script>
 
 <script>
 (function(){
@@ -330,19 +475,19 @@ const I18N = {
     badgeCobranza:'Cobranza', badgeConfeccion:'Confección', badgeImportacion:'Importación',
     cobDesc:'¿Le das fiado y no cobras? Registra deudas y envía recordatorios listos para copiar y enviar por tu WhatsApp.',
     cobF1:'Dashboard de deudas por cobrar', cobF2:'Recordatorios por WhatsApp en 3 tonos', cobF3:'Bilingüe ES/EN · sin instalar nada',
-    cobBy:'por PromptMagnate Lab', seeApp:'Ver app →',
+    cobBy:'App de la casa · PromptMagnate Lab', seeApp:'Ver app →',
     corDesc:'¿Cortas tela a ojo? Calcula consumo por talla con merma, tela angosta y costo estimado. En metros, yardas o pulgadas.',
     corF1:'Consumo por talla en vivo', corF2:'Merma ajustable y tela angosta', corF3:'Bilingüe ES/EN · sin instalar nada',
-    corBy:'por PromptMagnate Lab', seeApp2:'Ver app →',
+    corBy:'App de la casa · PromptMagnate Lab', seeApp2:'Ver app →',
     impDesc:'¿Importas de China a ciegas? Calcula tu costo total y margen real en segundos: producto, envío y comisiones.',
     impF1:'Costo total y margen real al instante', impF2:'Pesos, yuanes o dólares', impF3:'Bilingüe ES/EN · sin instalar nada',
-    impBy:'por PromptMagnate Lab', seeApp3:'Ver app →',
+    impBy:'App de la casa · PromptMagnate Lab', seeApp3:'Ver app →',
     metTitle:'Métricas reales', metSub:'Cifras oficiales del último mes publicado. Sin humo.',
     m1l:'Apps vivas', m2l:'Nichos', m3l:'Creadores en la plaza', m4l:'Comisión por venta',
     metNote:'Este tablero se actualiza cada mes publicado y se archiva el anterior.',
     howTitle:'Cómo funciona la plaza',
     h1t:'Elige tu reto', h1p:'Filtra por nicho: cobranza, confección, importación. Cada app expone UN problema y lo resuelve. Sin features infinitas.',
-    h2t:'Estudia la app', h2p:'Una sola función, explicada sin rodeos. Mira cómo se ve, qué resuelve y cuánto cuesta. Si no te resuelve, no compres.',
+    h2t:'Estudia la app', h2p:'Una sola función, explicada sin rodeos. En la ficha de cada app ves cómo se ve, qué resuelve y cuánto cuesta. Si no te resuelve, no compres.',
     h3t:'Compra directo al creador', h3p:'Sin carrito de la plaza ni comisiones ocultas: pagas en la landing del creador, con su propia pasarela. La plaza cobra 0% por venta.',
     mostKicker:'El mostrador', mostTitle:'¿Qué te frena hoy?',
     d1:'"Me deben y me da pena cobrar…"', d1a:'→ Ver app de cobranza',
@@ -362,7 +507,7 @@ const I18N = {
     postL3:'App / proyecto *', postP3:'MiMicroApp',
     postL4:'Nicho *', postN0:'Elige un nicho…', postN1:'Cobranza', postN2:'Confección', postN3:'Importación', postN4:'Otro (cuéntanos cuál)',
     postL5:'¿Qué problema resuelve tu app? *', postP5:'Ej: ayuda a peluqueras a cobrar las citas sin llamadas incómodas…',
-    postTerms:'Acepto los <a href="terminos-anunciante-proplaza.html" target="_self" class="underline decoration-brand underline-offset-2 font-medium text-navy hover:text-brand transition">Términos del anunciante</a> y entiendo que la plaza revisa cada postulación.',
+    postTerms:'Acepto los <a href="terminos-anunciante-proplaza.html" target="_blank" rel="noopener" class="underline decoration-brand underline-offset-2 font-medium text-navy hover:text-brand transition">Términos del anunciante</a> y entiendo que la plaza revisa cada postulación.',
     postBtn:'Enviar postulación', postOk:'¡Postulación recibida! Te contactamos en menos de 48 horas.'
   },
   en: {
@@ -377,19 +522,19 @@ const I18N = {
     badgeCobranza:'Collections', badgeConfeccion:'Garment', badgeImportacion:'Importing',
     cobDesc:'Do you sell on credit and never collect? Log debts and send ready-to-copy payment reminders via your WhatsApp.',
     cobF1:'Debts-due dashboard', cobF2:'WhatsApp reminders in 3 tones', cobF3:'Bilingual ES/EN · nothing to install',
-    cobBy:'by PromptMagnate Lab', seeApp:'View app →',
+    cobBy:'House app · PromptMagnate Lab', seeApp:'View app →',
     corDesc:'Do you cut fabric by eye? Calculate consumption per size with waste allowance, narrow fabric and estimated cost. In meters, yards or inches.',
     corF1:'Live consumption per size', corF2:'Adjustable waste & narrow fabric', corF3:'Bilingual ES/EN · nothing to install',
-    corBy:'by PromptMagnate Lab', seeApp2:'View app →',
+    corBy:'House app · PromptMagnate Lab', seeApp2:'View app →',
     impDesc:'Do you import from China blind? Calculate your total cost and real margin in seconds: product, shipping and fees.',
     impF1:'Total cost and real margin instantly', impF2:'Pesos, yuan or dollars', impF3:'Bilingual ES/EN · nothing to install',
-    impBy:'by PromptMagnate Lab', seeApp3:'View app →',
+    impBy:'House app · PromptMagnate Lab', seeApp3:'View app →',
     metTitle:'Real metrics', metSub:'Official figures from the last published month. No fluff.',
     m1l:'Live apps', m2l:'Niches', m3l:'Creators in the plaza', m4l:'Sales commission',
     metNote:'This board updates every published month and archives the previous one.',
     howTitle:'How the plaza works',
     h1t:'Pick your challenge', h1p:'Filter by niche: collections, garment making, importing. Each app exposes ONE problem and solves it. No infinite features.',
-    h2t:'Study the app', h2p:'One single function, explained without detours. See how it looks, what it solves and what it costs. If it doesn’t solve your problem, don’t buy.',
+    h2t:'Study the app', h2p:'One single function, explained without detours. On each app’s page you see how it looks, what it solves and what it costs. If it doesn’t solve your problem, don’t buy.',
     h3t:'Buy directly from the creator', h3p:'No plaza cart or hidden commissions: you pay on the creator’s landing page, with their own gateway. The plaza takes 0% per sale.',
     mostKicker:'The counter', mostTitle:'What’s holding you back today?',
     d1:'"People owe me and I’m embarrassed to collect…"', d1a:'→ View collections app',
@@ -409,7 +554,7 @@ const I18N = {
     postL3:'App / project *', postP3:'MyMicroApp',
     postL4:'Niche *', postN0:'Pick a niche…', postN1:'Collections', postN2:'Garment making', postN3:'Importing', postN4:'Other (tell us which)',
     postL5:'What problem does your app solve? *', postP5:'E.g.: helps hair stylists collect for appointments without awkward calls…',
-    postTerms:'I accept the <a href="terminos-anunciante-proplaza.html" target="_self" class="underline decoration-brand underline-offset-2 font-medium text-navy hover:text-brand transition">Advertiser Terms</a> and understand the plaza reviews every submission.',
+    postTerms:'I accept the <a href="terminos-anunciante-proplaza.html" target="_blank" rel="noopener" class="underline decoration-brand underline-offset-2 font-medium text-navy hover:text-brand transition">Advertiser Terms</a> and understand the plaza reviews every submission.',
     postBtn:'Submit application', postOk:'Application received! We’ll reach out within 48 hours.'
   }
 };
